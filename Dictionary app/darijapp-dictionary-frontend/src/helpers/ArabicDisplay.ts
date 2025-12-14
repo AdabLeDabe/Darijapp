@@ -1,13 +1,13 @@
 export function GetVariantDisplay(variant: Number) {
     switch (variant) {
         case 1: {
-            return "(🇲🇦)";
+            return "🇲🇦";
         }
         case 2: {
-            return "(🇩🇿)";
+            return "🇩🇿";
         }
         case 3: {
-            return "(🇹🇳)";
+            return "🇹🇳";
         }
         default: {
             return "";

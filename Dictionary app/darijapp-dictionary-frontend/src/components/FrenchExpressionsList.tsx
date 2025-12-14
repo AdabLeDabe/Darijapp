@@ -35,8 +35,22 @@ function FrenchExpressionsList() {
     return <div>Error: {error}</div>
 
   return (
-  <div>
-    <table className='expression-table'>
+  <div className='expression-table'>
+    <div className='expression-table-header'>
+      <div className='expression-table-cell'>French</div>
+      <div className='expression-table-cell'>Arabic</div>
+    </div>
+    {frenchExpressions.map((item) => (
+        <div key={item.id} className='expression-table-row'>
+            <div className='expression-table-cell'>{item.expression} <i>{item.detail}</i></div>
+            <div className='expression-table-cell'>
+                {item.translations.map((arabicItem) => (
+                    <span>{arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}</span>
+                ))}
+            </div>
+        </div>
+    ))}
+    {/* <table className='expression-table'>
         <tr className='expression-table-header'>
             <th>French</th>
             <th>Arabic</th>
@@ -51,7 +65,7 @@ function FrenchExpressionsList() {
                 </td>
             </tr>
         ))}
-    </table>
+    </table> */}
   </div>);
 }
 

@@ -8,13 +8,29 @@
 }
 
 .expression-table {
-    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0rem 1rem 3rem -1rem #1f3a57;
 }
 
 .expression-table-header {
-    background-color: #8fb1d6;
-    border-radius: 16px;
-    display:table-header-group;
-    margin: 0;
-    padding: 0;
+    background-color: #3e76b1;
+    flex-direction: row;
+    display: flex;
 }
+
+.expression-table-row {
+    flex-direction: row;
+    display: flex;
+    overflow: hidden;
+}
+
+.expression-table-row:nth-child(odd) {
+    background-color: #16477a;
+}
+
+.expression-table-cell {
+    flex: 1;
+    padding: 1rem;
+}
+
