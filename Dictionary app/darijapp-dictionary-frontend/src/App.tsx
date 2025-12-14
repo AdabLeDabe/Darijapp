@@ -5,9 +5,9 @@ import ArabicExpressionCreation from './components/ArabicExpressionCreation';
 
 function App() {
   return (
-    <>
+    <div className='main-container'>
         <FrenchExpressionsList />
-    </>
+    </div>
   )
 }
 

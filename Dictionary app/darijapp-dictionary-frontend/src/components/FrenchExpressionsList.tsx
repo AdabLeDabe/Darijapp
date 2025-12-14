@@ -35,8 +35,8 @@ function FrenchExpressionsList() {
     return <div>Error: {error}</div>
 
   return <div>
-    <table>
-        <tr>
+    <table className='expression-table'>
+        <tr className='expression-table-header'>
             <th>French</th>
             <th>Arabic</th>
         </tr>
