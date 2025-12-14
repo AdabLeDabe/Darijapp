@@ -45,7 +45,9 @@ function FrenchExpressionsList() {
             <div className='expression-table-cell'>{item.expression} <i>{item.detail}</i></div>
             <div className='expression-table-cell'>
                 {item.translations.map((arabicItem) => (
-                    <span>{arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}</span>
+                    <div className='expression-table-arabic-word'>
+                        {arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}
+                    </div>
                 ))}
             </div>
         </div>

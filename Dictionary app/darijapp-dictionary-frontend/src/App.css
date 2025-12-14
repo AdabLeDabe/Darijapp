@@ -11,6 +11,7 @@
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0rem 1rem 3rem -1rem #1f3a57;
+
 }
 
 .expression-table-header {
@@ -32,5 +33,17 @@
 .expression-table-cell {
     flex: 1;
     padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.expression-table-arabic-word {
+    padding: 0.5rem 1rem;
+    background-color: #3e76b1;
+    border-radius: 0.5rem;
 }
 
