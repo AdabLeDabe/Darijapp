@@ -20,7 +20,9 @@ func ConnectToPostgreServer() (*sql.DB, error) {
 
 	db, err := connectAndPing(psqlInfo)
 	if err != nil {
-		db.Close()
+		if db != nil {
+			db.Close()
+		}
 		return nil, err
 	}
 
