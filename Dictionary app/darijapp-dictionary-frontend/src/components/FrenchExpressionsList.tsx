@@ -3,76 +3,68 @@ import '../App.css'
 import type { FrenchWithTranslations } from '../models/FrenchWithTranslations';
 import { GetVariantDisplay } from '../helpers/ArabicDisplay';
 
-function FrenchExpressionsList() {
-  const [frenchExpressions, setFrenchExpressions] = useState<FrenchWithTranslations[]>([]);
-  const [selectedItem, setSelectedItem] = useState<FrenchWithTranslations | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface FrenchExpressionsListProps {
+    selectedItem: FrenchWithTranslations | null,
+    setSelectedItem: (newSelectedItem: FrenchWithTranslations) => void,
+    setEditMode: (newEditMode: boolean) => void
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('api/expressions/frenchWithTranslations');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
+function FrenchExpressionsList({ selectedItem: selectedItem, setSelectedItem: setSelectedItem, setEditMode: setEditMode }: FrenchExpressionsListProps) {
+    const [frenchExpressions, setFrenchExpressions] = useState<FrenchWithTranslations[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-        const result = await response.json();
-        setFrenchExpressions(result);
-      } catch(err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('api/expressions/frenchWithTranslations');
 
-    fetchData();
-  }, []);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch');
+                }
 
-  if (loading)
-    return <div>Loading...</div>;
-  if (error)
-    return <div>Error: {error}</div>
+                const result = await response.json();
+                setFrenchExpressions(result);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'An error occurred');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-  return (
-  <div className='expression-table'>
-    <div className='expression-table-header'>
-      <div className='expression-table-cell'>French</div>
-      <div className='expression-table-cell'>Arabic</div>
-    </div>
-    {frenchExpressions.map((item) => (
-        <div
-        key={item.id}
-        className={(selectedItem?.id === item.id ? 'expression-table-row-selected' : 'expression-table-row')}
-        onClick={() => setSelectedItem(item)}>
-            <div className='expression-table-cell'>{item.expression} <i>{item.detail}</i></div>
-            <div className='expression-table-cell'>
-                {item.translations.map((arabicItem) => (
-                    <div className='expression-table-arabic-word'>
-                        {arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}
+        fetchData();
+    }, []);
+
+    if (loading)
+        return <div>Loading...</div>;
+    if (error)
+        return <div>Error: {error}</div>
+
+    return (
+        <>
+            <button disabled={selectedItem == null} onClick={() => setEditMode(true)}>Edit</button>
+            <div className='expression-table'>
+                <div className='expression-table-header'>
+                    <div className='expression-table-cell'>French</div>
+                    <div className='expression-table-cell'>Arabic</div>
+                </div>
+                {frenchExpressions.map((item) => (
+                    <div
+                        key={item.id}
+                        className={(selectedItem?.id === item.id ? 'expression-table-row-selected' : 'expression-table-row')}
+                        onClick={() => setSelectedItem(item)}>
+                        <div className='expression-table-cell'>{item.expression} <i>{item.detail}</i></div>
+                        <div className='expression-table-cell'>
+                            {item.translations.map((arabicItem) => (
+                                <div className='expression-table-arabic-word'>
+                                    {arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ))}
             </div>
-        </div>
-    ))}
-    {/* <table className='expression-table'>
-        <tr className='expression-table-header'>
-            <th>French</th>
-            <th>Arabic</th>
-        </tr>
-        {frenchExpressions.map((item) => (
-            <tr key={item.id}>
-                <td>{item.expression} <i>{item.detail}</i></td>
-                <td>
-                    {item.translations.map((arabicItem) => (
-                        <span>{arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}</span>
-                    ))}
-                </td>
-            </tr>
-        ))}
-    </table> */}
-  </div>);
+        </>);
 }
 
 export default FrenchExpressionsList

@@ -7,6 +7,24 @@
     text-align: center;
 }
 
+button {
+    color: white;
+    background-color: #bf4342;
+    border-width: 0px;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #8c1c13;
+}
+
+button:disabled {
+    background-color: #916e6e;
+}
+
 .expression-table {
     border-radius: 1rem;
     overflow: hidden;
