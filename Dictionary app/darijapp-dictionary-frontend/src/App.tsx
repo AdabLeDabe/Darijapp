@@ -7,12 +7,26 @@ import EditionBar from './components/EditionBar';
 function App() {
     const [isEditMode, setEditMode] = useState(false);
     const [selectedFrenchItem, setSelectedFrenchItem] = useState<FrenchWithTranslations | null>(null);
+
+    function AddCallback() {
+        setSelectedFrenchItem(null);
+        setEditMode(true);
+    }
+
+    function EditCallBack() {
+        setEditMode(true);
+    }
+
+    function ReturnCallback() {
+        setEditMode(false);
+    }
+
     return (
         <div className='main-container'>
-            <EditionBar hasSelectedItem={selectedFrenchItem != null}/>
+            <EditionBar isEditMode={isEditMode} addCallback={AddCallback} returnCallBack={ReturnCallback}/>
             {isEditMode
                 ? <FrenchExpressionCreation selectedWord={selectedFrenchItem} showTranslationsMenu={true} linkedArabicExpressionId={null} />
-                : <FrenchExpressionsList selectedItem={selectedFrenchItem} setSelectedItem={setSelectedFrenchItem} setEditMode={setEditMode} />}
+                : <FrenchExpressionsList selectedItem={selectedFrenchItem} setSelectedItem={setSelectedFrenchItem} editCallback={EditCallBack} />}
         </div>
     )
 }

@@ -6,10 +6,10 @@ import { GetVariantDisplay } from '../helpers/ArabicDisplay';
 interface FrenchExpressionsListProps {
     selectedItem: FrenchWithTranslations | null,
     setSelectedItem: (newSelectedItem: FrenchWithTranslations) => void,
-    setEditMode: (newEditMode: boolean) => void
+    editCallback: () => void
 }
 
-function FrenchExpressionsList({ selectedItem: selectedItem, setSelectedItem: setSelectedItem, setEditMode: setEditMode }: FrenchExpressionsListProps) {
+function FrenchExpressionsList({ selectedItem: selectedItem, setSelectedItem: setSelectedItem, editCallback: editCallback }: FrenchExpressionsListProps) {
     const [frenchExpressions, setFrenchExpressions] = useState<FrenchWithTranslations[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -56,13 +56,13 @@ function FrenchExpressionsList({ selectedItem: selectedItem, setSelectedItem: se
                         <div className='expression-table-cell'>{item.expression} <i>{item.detail}</i></div>
                         <div className='expression-table-cell'>
                             {item.translations.map((arabicItem) => (
-                                <div className='expression-table-arabic-word'>
+                                <div key={arabicItem.id} className='expression-table-arabic-word'>
                                     {arabicItem.expression_arabic} / {arabicItem.expression_phonetic} {GetVariantDisplay(arabicItem.variant)}
                                 </div>
                             ))}
                         </div>
                         <div className='expression-table-cell-tool'>
-                            <button disabled={selectedItem?.id != item.id} onClick={() => setEditMode(true)}>Edit</button>
+                            <button disabled={selectedItem?.id != item.id} onClick={() => editCallback()}>Edit</button>
                             <button disabled={selectedItem?.id != item.id} >Delete</button>
                         </div>
                     </div>
