@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS french (
     id SERIAL PRIMARY KEY,
     expression VARCHAR(255) NOT NULL,
     detail TEXT
+    CONSTRAINT expression_not_blank CHECK (LENGTH(TRIM(expression)) > 0)
 );
 
 CREATE TABLE IF NOT EXISTS arabic (
@@ -9,6 +10,8 @@ CREATE TABLE IF NOT EXISTS arabic (
     expression_arabic VARCHAR(255) NOT NULL,
     expression_phonetic VARCHAR(255) NOT NULL,
     variant INTEGER CHECK (variant >= 0 AND variant <= 3)
+    CONSTRAINT arabic_expression_not_blank CHECK (LENGTH(TRIM(expression_arabic)) > 0)
+    CONSTRAINT phonetic_expression_not_blank CHECK (LENGTH(TRIM(expression_phonetic)) > 0)
 );
 
 CREATE TABLE IF NOT EXISTS translation (

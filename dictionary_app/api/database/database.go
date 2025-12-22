@@ -46,12 +46,13 @@ func DatabaseExists(db *sql.DB) (bool, error) {
 }
 
 func CreateDatabase(baseDb *sql.DB) error {
-	createDbSchema, err := os.ReadFile("./database/create_db.sql")
+	config, err := config.GetConfiguration()
 	if err != nil {
 		return err
 	}
 
-	_, err = baseDb.Exec(string(createDbSchema))
+	createDbScript := fmt.Sprintf("CREATE DATABASE %s ENCODING 'UTF8';", config.DbName)
+	_, err = baseDb.Exec(createDbScript)
 	if err != nil {
 		return err
 	}
