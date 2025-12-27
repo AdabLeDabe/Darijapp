@@ -100,3 +100,14 @@ button:disabled {
     color: white;
 }
 
+input[type='text'] {
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 0.1rem solid #735751;
+    background: linear-gradient(0deg, #3b352c31 0%, #e7d7c100 100%);
+    box-shadow: 0 0.5vw 1vw rgba(0,0,0,.2);
+    text-align: center;
+    font-size: x-large;
+    /* display: flex; */
+}
