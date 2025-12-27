@@ -12,7 +12,6 @@ interface FrenchExpressionCreationProps {
 
 function FrenchExpressionCreation({ selectedWord, showTranslationsMenu, linkedArabicExpressionId, returnCallBack }: FrenchExpressionCreationProps) {
     const [createdWord, setCreatedWord] = useState<French | null>(selectedWord);
-    //const [isDirty, setIsDirty] = useState<boolean>(false);
     const [isSaveDisabled, setIsSaveDisabled] = useState<boolean>(true);
     var isDirty = false;
     const formData = useRef({
