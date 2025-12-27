@@ -116,21 +116,17 @@ function FrenchExpressionCreation({ selectedWord, showTranslationsMenu, linkedAr
 
     return (
         <div>
-            <label>
-                Expression:
+            <div className='creation-form-container'>
+                <label htmlFor="expression">Expression:</label>
                 <input type="text" name="expression" onChange={updateFormData} defaultValue={selectedWord?.expression}></input>
-            </label>
-            <br /><br />
-            <label>
-                Detail:
+                <label htmlFor='detail'>Detail:</label>
                 <input type="text" name="detail" onChange={updateFormData} defaultValue={selectedWord?.detail}></input>
-            </label>
-            <br /><br />
-            <button disabled={isSaveDisabled} onClick={saveAndReturn}>Save & return</button>
-            <button disabled={isSaveDisabled} onClick={saveFormData}>Save</button>
+            </div>
             {showTranslationsMenu && (
                 <ArabicTranslations frenchId={createdWord?.id ?? null} />
             )}
+            <button disabled={isSaveDisabled} onClick={saveAndReturn}>Save & return</button>
+            <button disabled={isSaveDisabled} onClick={saveFormData}>Save</button>
         </div>
     );
 }
