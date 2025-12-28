@@ -81,7 +81,7 @@ function ArabicTranslations({ frenchId }: ArabicTranslationsProps) {
                     </div>
                 ))}
             </div>
-            <button disabled={frenchId == null} onClick={() => openModalToAddTranslation()}>Add a translation</button>
+            <button disabled={frenchId == null} onClick={() => openModalToAddTranslation()}>Add translation</button>
             <button disabled={frenchId == null || selectedTranslation == null} onClick={() => setIsTranslationModalOpen(true)}>Modify translation</button>
             <button disabled={frenchId == null || selectedTranslation == null} onClick={() => deleteTranslation()}>Delete translation</button>
 
