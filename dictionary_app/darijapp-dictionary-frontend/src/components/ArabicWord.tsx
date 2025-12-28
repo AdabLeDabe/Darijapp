@@ -9,10 +9,10 @@ interface ArabicWordProps {
 function ArabicWord({word: arabicWord, isSelected} : ArabicWordProps) {
     const getClassName = () => {
         if (isSelected) {
-            return "arabic-word arabic-word-selected";
+            return "word word-selected";
         }
         else {
-            return "arabic-word"
+            return "word"
         }
     }
 

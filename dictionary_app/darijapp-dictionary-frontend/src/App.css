@@ -90,7 +90,7 @@ button:disabled {
     align-items: center;
 }
 
-.arabic-word {
+.word {
     padding: 0.5rem 1rem;
     margin: 0.25rem;
     background-color: #735751;
@@ -98,7 +98,7 @@ button:disabled {
     color: white;
 }
 
-.arabic-word-selected {
+.word-selected {
     background-color: #bf4342;
 }
 

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../App.css'
 import type { FrenchWithTranslations } from '../models/FrenchWithTranslations';
-import { GetVariantDisplay } from '../helpers/ArabicDisplay';
 import ArabicWord from './ArabicWord';
 
 interface FrenchExpressionsListProps {

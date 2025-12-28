@@ -89,7 +89,11 @@ function ArabicTranslations({ frenchId }: ArabicTranslationsProps) {
                 <div className="modal-backdrop">
                     <DialogPanel className="modal-content">
                         <DialogTitle>Add a translation</DialogTitle>
-                        <ArabicExpressionCreation selectedWord={selectedTranslation ?? null} linkedFrenchExpressionId={frenchId} showTranslationsMenu={false} />
+                        <ArabicExpressionCreation
+                            selectedWord={selectedTranslation ?? null}
+                            linkedFrenchExpressionId={frenchId}
+                            showTranslationsMenu={false}
+                            returnCallBack={() => setIsTranslationModalOpen(false)} />
                         <button onClick={() => setIsTranslationModalOpen(false)}>Close</button>
                     </DialogPanel>
                 </div>
