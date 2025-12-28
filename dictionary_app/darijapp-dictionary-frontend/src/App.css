@@ -66,12 +66,12 @@ button:disabled {
     flex-direction: row;
     display: flex;
     background-color: #8c1c13;
-    color:  white;
+    color: white;
 }
 
 .expression-table-row:hover {
     background-color: #bf4342;
-    color:  white;
+    color: white;
 }
 
 .expression-table-cell {
@@ -107,11 +107,39 @@ input[type='text'] {
     border-right: 0px;
     border-top: 0px;
     border-bottom: 0.1rem solid #735751;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     background: linear-gradient(0deg, #3b352c31 0%, #e7d7c100 100%);
-    box-shadow: 0 0.5vw 1vw rgba(0,0,0,.2);
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, .2);
     text-align: center;
     font-size: xx-large;
     color: #493733;
+}
+
+select {
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 0.1rem solid #735751;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, .2);
+    padding: 0.5rem;
+    padding-right: 0.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: x-large;
+    background: url("/down-arrow.svg") 96% center / 1rem 1rem no-repeat, linear-gradient(0deg, #3b352c31 0%, #e7d7c100 100%);
+    color: #493733;
+}
+
+select option {
+    background-color: #e7d7c1;
+}
+
+select option:checked {
+    background-color: #cabca8;
 }
 
 .creation-form-container {
@@ -133,11 +161,16 @@ input[type='text'] {
     max-width: 500px;
 }
 
+.creation-form-container select {
+    text-align: left;
+    max-width: 250px;
+}
+
 .translation-container {
     margin: auto;
     padding: 2rem;
     width: 80%;
-    border-width: 0.1rem 0 0 0; 
+    border-width: 0.1rem 0 0 0;
     border-style: solid;
     border-image: linear-gradient(to right, #e7d7c100 0%, #3b352cde 50%, #e7d7c100 100%) 1;
 }

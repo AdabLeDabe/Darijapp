@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import '../App.css'
 import type { Arabic } from '../models/Arabic';
 import FrenchTranslations from './FrenchTranslations';
+import { GetVariantDisplay } from '../helpers/ArabicDisplay';
 
 interface ArabicExpressionCreationProps {
     selectedWord: Arabic | null,
@@ -145,7 +146,7 @@ function ArabicExpressionCreation({ selectedWord, linkedFrenchExpressionId, show
                 <select name="variant" onChange={updateFormDataVariant} defaultValue={createdWord?.variant ?? 0}>
                     {variantOptions.map(option => (
                         <option key={option.value} value={option.value}>
-                            {option.label}
+                            {option.label} {GetVariantDisplay(option.value)}
                         </option>
                     ))}
                 </select>
