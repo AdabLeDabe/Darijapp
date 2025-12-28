@@ -9,11 +9,13 @@ import type { ArabicWithTranslations } from './models/ArabicWithTranslations';
 
 function App() {
     const [isEditMode, setEditMode] = useState(false);
+    const [isInFrenchMode, setFrenchMode] = useState(true);
     const [selectedFrenchItem, setSelectedFrenchItem] = useState<FrenchWithTranslations | null>(null);
     const [selectedArabicItem, setSelectedArabicItem] = useState<ArabicWithTranslations | null>(null);
 
     function addCallback() {
         setSelectedFrenchItem(null);
+        setSelectedArabicItem(null);
         setEditMode(true);
     }
 
@@ -25,23 +27,42 @@ function App() {
         setEditMode(false);
     }
 
+    function getFrenchToggleClassName() {
+        return isInFrenchMode ? "toggle-language-button toggle-language-button-selected" : "toggle-language-button";
+    }
+
+    function getArabicToggleClassName() {
+        return !isInFrenchMode ? "toggle-language-button toggle-language-button-selected" : "toggle-language-button";
+    }
+
+    function toggleLanguage() {
+        setSelectedFrenchItem(null);
+        setSelectedArabicItem(null);
+        setFrenchMode(!isInFrenchMode);
+    }
+
     return (
         <div className='main-container'>
+            <div className='toggle-language-container' onClick={toggleLanguage}>
+                <div className={getFrenchToggleClassName()}>French</div>
+                <div className={getArabicToggleClassName()}>Arabic</div>
+            </div>
             <EditionBar isEditMode={isEditMode} addCallback={addCallback} returnCallBack={returnCallback} />
-            {isEditMode
-                ? <ArabicExpressionCreation
-                    selectedWord={selectedArabicItem}
-                    showTranslationsMenu={true}
-                    linkedFrenchExpressionId={null}
-                    returnCallBack={returnCallback} />
-                : <ArabicExpressionsList selectedItem={selectedArabicItem} setSelectedItem={setSelectedArabicItem} editCallback={editCallBack} />}
-            {/* {isEditMode
-                ? <FrenchExpressionCreation
-                    selectedWord={selectedFrenchItem}
-                    showTranslationsMenu={true}
-                    linkedArabicExpressionId={null}
-                    returnCallBack={returnCallback} />
-                : <FrenchExpressionsList selectedItem={selectedFrenchItem} setSelectedItem={setSelectedFrenchItem} editCallback={editCallBack} />} */}
+            {isInFrenchMode
+                ? isEditMode
+                    ? <FrenchExpressionCreation
+                        selectedWord={selectedFrenchItem}
+                        showTranslationsMenu={true}
+                        linkedArabicExpressionId={null}
+                        returnCallBack={returnCallback} />
+                    : <FrenchExpressionsList selectedItem={selectedFrenchItem} setSelectedItem={setSelectedFrenchItem} editCallback={editCallBack} />
+                : isEditMode
+                    ? <ArabicExpressionCreation
+                        selectedWord={selectedArabicItem}
+                        showTranslationsMenu={true}
+                        linkedFrenchExpressionId={null}
+                        returnCallBack={returnCallback} />
+                    : <ArabicExpressionsList selectedItem={selectedArabicItem} setSelectedItem={setSelectedArabicItem} editCallback={editCallBack} />}
         </div>
     )
 }
