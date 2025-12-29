@@ -137,7 +137,7 @@ function ArabicExpressionCreation({ selectedWord, linkedFrenchExpressionId, show
 
     return (
         <div>
-            <div className='creation-form-container'>
+            <div className='form-container'>
                 <label htmlFor="expression_phonetic">Expression phonetic:</label>
                 <input type="text" name="expression_phonetic" onChange={updateFormData} defaultValue={selectedWord?.expression_phonetic}></input>
                 <label htmlFor="expression_arabic">Expression arabic:</label>

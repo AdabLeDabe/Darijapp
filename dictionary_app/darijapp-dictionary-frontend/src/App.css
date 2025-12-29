@@ -167,7 +167,7 @@ select option:checked {
     background-color: #cabca8;
 }
 
-.creation-form-container {
+.form-container {
     width: 100%;
     display: grid;
     grid-template-columns: 25% 1fr;
@@ -175,13 +175,13 @@ select option:checked {
     padding: 2rem;
 }
 
-.creation-form-container label {
+.form-container label {
     text-align: right;
     align-self: center;
     font-size: x-large;
 }
 
-.creation-form-container input {
+.form-container input {
     text-align: left;
     max-width: 500px;
 }

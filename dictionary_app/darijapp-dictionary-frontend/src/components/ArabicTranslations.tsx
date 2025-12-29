@@ -75,8 +75,7 @@ function ArabicTranslations({ frenchId }: ArabicTranslationsProps) {
                 {arabicExpressions.map(arabicWord => (
                     <div
                         key={arabicWord.id}
-                        onClick={() => setSelectedTranslation(arabicWord)}
-                    >
+                        onClick={() => setSelectedTranslation(arabicWord)} >
                         <ArabicWord word={arabicWord} isSelected={selectedTranslation?.id === arabicWord.id} />
                     </div>
                 ))}

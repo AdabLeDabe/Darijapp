@@ -116,7 +116,7 @@ function FrenchExpressionCreation({ selectedWord, showTranslationsMenu, linkedAr
 
     return (
         <div>
-            <div className='creation-form-container'>
+            <div className='form-container'>
                 <label htmlFor="expression">Expression:</label>
                 <input type="text" name="expression" onChange={updateFormData} defaultValue={selectedWord?.expression}></input>
                 <label htmlFor='detail'>Detail:</label>

@@ -6,17 +6,23 @@ import ArabicWord from './ArabicWord';
 interface FrenchExpressionsListProps {
     selectedItem: FrenchWithTranslations | null,
     setSelectedItem: (newSelectedItem: FrenchWithTranslations | null) => void,
-    editCallback: () => void
+    editCallback: () => void,
+    filter: string
 }
 
-function FrenchExpressionsList({ selectedItem, setSelectedItem, editCallback }: FrenchExpressionsListProps) {
+function FrenchExpressionsList({ selectedItem, setSelectedItem, editCallback, filter }: FrenchExpressionsListProps) {
     const [frenchExpressions, setFrenchExpressions] = useState<FrenchWithTranslations[]>([]);
+    const [filteredFrenchExpressions, setFilteredFrenchExpressions] = useState<FrenchWithTranslations[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        updateFilter();
+    }, [filter]);
 
     const fetchData = async () => {
         try {
@@ -28,12 +34,22 @@ function FrenchExpressionsList({ selectedItem, setSelectedItem, editCallback }: 
 
             const result = await response.json();
             setFrenchExpressions(result);
+            setFilteredFrenchExpressions(result);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'An error occurred');
         } finally {
             setLoading(false);
         }
     };
+
+    const updateFilter = () => {
+        if (!filter || filter.trim() === "") {
+            setFilteredFrenchExpressions(frenchExpressions);
+        }
+        else {
+            setFilteredFrenchExpressions(frenchExpressions.filter(item => item.expression.toLowerCase().includes(filter.toLowerCase())))
+        }
+    }
 
     const deleteWord = async () => {
         if (selectedItem == null) {
@@ -74,7 +90,7 @@ function FrenchExpressionsList({ selectedItem, setSelectedItem, editCallback }: 
                     <div className='expression-table-cell'>Arabic</div>
                     <div className='expression-table-cell-tool'></div>
                 </div>
-                {frenchExpressions.map((item) => (
+                {filteredFrenchExpressions.map((item) => (
                     <div
                         key={item.id}
                         className={(selectedItem?.id === item.id ? 'expression-table-row-selected' : 'expression-table-row')}
