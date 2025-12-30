@@ -69,7 +69,7 @@ function ArabicTranslations({ frenchId }: ArabicTranslationsProps) {
     };
 
     return (
-        <div className="translation-container">
+        <div className="sub-container">
             <h2>Translations</h2>
             <div className="translation-list">
                 {arabicExpressions.map(arabicWord => (

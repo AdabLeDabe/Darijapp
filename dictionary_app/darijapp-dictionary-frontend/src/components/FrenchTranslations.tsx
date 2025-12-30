@@ -4,6 +4,8 @@ import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import FrenchExpressionCreation from "./FrenchExpressionCreation";
 import '../App.css'
 import '../Modal.css'
+import FrenchWord from "./FrenchWord";
+import FrenchExpressionSearch from "./FrenchExpressionSearch";
 
 interface FrenchTranslationsProps {
     arabicId: number | null
@@ -12,6 +14,7 @@ interface FrenchTranslationsProps {
 function FrenchTranslations({ arabicId: arabicId }: FrenchTranslationsProps) {
     const [frenchExpressions, setFrenchExpressions] = useState<French[]>([]);
     const [isTranslationModalOpen, setIsTranslationModalOpen] = useState(false);
+    const [isSearchTranslationModalOpen, setisSearchTranslationModalOpen] = useState(false);
     const [selectedTranslation, setSelectedTranslation] = useState<French | null>(null);
 
     useEffect(() => {
@@ -39,6 +42,11 @@ function FrenchTranslations({ arabicId: arabicId }: FrenchTranslationsProps) {
         setSelectedTranslation(null);
         setIsTranslationModalOpen(true);
     };
+
+    const openModalToSearchTranslation = () => {
+        setSelectedTranslation(null);
+        setisSearchTranslationModalOpen(true);
+    }
 
     const deleteTranslation = async () => {
         try {
@@ -68,20 +76,19 @@ function FrenchTranslations({ arabicId: arabicId }: FrenchTranslationsProps) {
     };
 
     return (
-        <div>
-            <div className="selectable-list">
-                {frenchExpressions.map(expression => (
+        <div className="sub-container">
+            <h2>Translations</h2>
+            <div className="translation-list">
+                {frenchExpressions.map(frenchWord => (
                     <div
-                        key={expression.id}
-                        onClick={() => setSelectedTranslation(expression)}
-                        className={selectedTranslation?.id === expression.id ? 'selected' : ''}
-                    >
-                        {expression.expression}
+                        key={frenchWord.id}
+                        onClick={() => setSelectedTranslation(frenchWord)}>
+                        <FrenchWord word={frenchWord} isSelected={selectedTranslation?.id === frenchWord.id} />
                     </div>
                 ))}
             </div>
             <button disabled={arabicId == null} onClick={() => openModalToAddTranslation()}>Add translation</button>
-            <button disabled={arabicId == null}>Add existing translation</button>
+            <button disabled={arabicId == null} onClick={() => openModalToSearchTranslation()}>Add existing translation</button>
             <button disabled={arabicId == null || selectedTranslation == null} onClick={() => setIsTranslationModalOpen(true)}>Modify translation</button>
             <button disabled={arabicId == null || selectedTranslation == null} onClick={() => deleteTranslation()}>Delete translation</button>
 
@@ -94,6 +101,14 @@ function FrenchTranslations({ arabicId: arabicId }: FrenchTranslationsProps) {
                             linkedArabicExpressionId={arabicId}
                             showTranslationsMenu={false}
                             returnCallBack={() => setIsTranslationModalOpen(false)} />
+                    </DialogPanel>
+                </div>
+            </Dialog>
+            <Dialog open={isSearchTranslationModalOpen} onClose={() => setisSearchTranslationModalOpen(false)}>
+                <div className="modal-backdrop">
+                    <DialogPanel className="modal-content search-modal-content">
+                        <DialogTitle>Add existing translation</DialogTitle>
+                        <FrenchExpressionSearch />
                     </DialogPanel>
                 </div>
             </Dialog>

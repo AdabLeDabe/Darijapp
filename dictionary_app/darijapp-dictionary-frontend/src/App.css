@@ -186,12 +186,12 @@ select option:checked {
     max-width: 500px;
 }
 
-.creation-form-container select {
+.form-container select {
     text-align: left;
     max-width: 250px;
 }
 
-.translation-container {
+.sub-container {
     margin: auto;
     padding: 2rem;
     width: 80%;
@@ -208,6 +208,9 @@ select option:checked {
     flex-wrap: wrap;
     justify-content: center;
     font-size: x-large;
+    max-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 @media (max-width: 1000px) {
