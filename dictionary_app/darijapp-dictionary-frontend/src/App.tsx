@@ -48,14 +48,18 @@ function App() {
 
     return (
         <div className='main-container'>
-            <div className='toggle-language-container' onClick={toggleLanguage}>
-                <div className={getFrenchToggleClassName()}>French</div>
-                <div className={getArabicToggleClassName()}>Arabic</div>
-            </div>
-            <div className='form-container'>
-                <label htmlFor='searchFilter'>Search:</label>
-                <input name="searchFilter" type='text' onChange={updateFormData}></input>
-            </div>
+            {!isEditMode
+                ? <>
+                    <div className='toggle-language-container' onClick={toggleLanguage}>
+                        <div className={getFrenchToggleClassName()}>French</div>
+                        <div className={getArabicToggleClassName()}>Arabic</div>
+                    </div>
+                    <div className='form-container'>
+                        <label htmlFor='searchFilter'>Search:</label>
+                        <input name="searchFilter" type='text' onChange={updateFormData}></input>
+                    </div>
+                </>
+                : <></>}
             <EditionBar isEditMode={isEditMode} addCallback={addCallback} returnCallBack={returnCallback} />
             {isInFrenchMode
                 ? isEditMode
