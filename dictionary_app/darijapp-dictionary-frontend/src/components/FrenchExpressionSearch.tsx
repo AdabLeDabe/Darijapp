@@ -3,7 +3,11 @@ import type { French } from "../models/French";
 import FrenchWord from "./FrenchWord";
 import { removeAccents } from "../helpers/SearchHelper";
 
-function FrenchExpressionSearch() {
+interface FrenchExpressionSearchProps {
+    existingTranslations: French[]
+}
+
+function FrenchExpressionSearch({ existingTranslations }: FrenchExpressionSearchProps) {
     const [frenchExpressions, setFrenchExpressions] = useState<French[]>([]);
     const [filteredFrenchExpressions, setFilteredFrenchExpressions] = useState<French[]>([]);
     const [selectedFrenchExpressions, setSelectedFrenchExpressions] = useState<French[]>([]);
@@ -18,7 +22,9 @@ function FrenchExpressionSearch() {
             setFilteredFrenchExpressions(frenchExpressions);
         }
         else {
-            setFilteredFrenchExpressions(frenchExpressions.filter(item => removeAccents(item.expression).toLowerCase().includes(removeAccents(searchFilter).toLowerCase())))
+            setFilteredFrenchExpressions(frenchExpressions.filter(item =>
+                removeAccents(item.expression).toLowerCase().includes(removeAccents(searchFilter).toLowerCase())
+                && !existingTranslations.some(exisitng => exisitng.id === item.id)))
         }
     }
 
@@ -73,7 +79,7 @@ function FrenchExpressionSearch() {
                 <input name="searchFilter" type='text' onChange={updateSearchFilter}></input>
             </div>
             <div className="sub-container">
-                <h3>Selected words:</h3>
+                <h3>Selected words</h3>
                 <div className="translation-list">
                     {selectedFrenchExpressions.map(frenchWord => (
                         <div
@@ -85,7 +91,7 @@ function FrenchExpressionSearch() {
                 </div>
             </div>
             <div className="sub-container">
-                <h3>Search results:</h3>
+                <h3>Search results</h3>
                 <div className="translation-list">
                     {!isSearchFilterEmpty()
                         && filteredFrenchExpressions.map(frenchWord => (

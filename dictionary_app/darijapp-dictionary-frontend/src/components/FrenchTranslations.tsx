@@ -108,7 +108,7 @@ function FrenchTranslations({ arabicId: arabicId }: FrenchTranslationsProps) {
                 <div className="modal-backdrop">
                     <DialogPanel className="modal-content search-modal-content">
                         <DialogTitle>Add existing translation</DialogTitle>
-                        <FrenchExpressionSearch />
+                        <FrenchExpressionSearch existingTranslations={frenchExpressions}/>
                     </DialogPanel>
                 </div>
             </Dialog>
