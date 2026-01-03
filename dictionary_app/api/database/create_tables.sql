@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS translation (
 
 CREATE TABLE IF NOT EXISTS category (
     id SERIAL PRIMARY KEY,
-    category_name VARCHAR(255) NOT NULL,
+    category_name VARCHAR(255) NOT NULL UNIQUE,
     CONSTRAINT category_name_not_blank CHECK (LENGTH(TRIM(category_name)) > 0)
 );
 

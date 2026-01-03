@@ -50,6 +50,11 @@ type Translation struct {
 	ArabicId int `db:"arabic_id" json:"arabic_id"`
 }
 
+type Category struct {
+	Id           int    `db:"id" json:"id"`
+	CategoryName string `db:"category_name" json:"category_name"`
+}
+
 var db *sqlx.DB
 
 func SetDB(dbToSet *sql.DB) {
@@ -80,6 +85,12 @@ func IntializeRouter() *mux.Router {
 	HandleFuncWithLogs(router, "/translations/{id}", deleteTranslation).Methods("DELETE")
 	HandleFuncWithLogs(router, "/translations/search/from_french/{id}", searchTranslationFromFrench).Methods("GET")
 	HandleFuncWithLogs(router, "/translations/search/from_arabic/{id}", searchTranslationFromArabic).Methods("GET")
+
+	HandleFuncWithLogs(router, "/categories", getAllCategory).Methods("GET")
+	HandleFuncWithLogs(router, "/categories/{id}", getCategory).Methods("GET")
+	HandleFuncWithLogs(router, "/categories", addCategory).Methods("POST")
+	HandleFuncWithLogs(router, "/categories/{id}", updateCategory).Methods("PUT")
+	HandleFuncWithLogs(router, "/categories/{id}", deleteCategory).Methods("DELETE")
 
 	return router
 }
@@ -573,5 +584,126 @@ func searchTranslationFromArabic(w http.ResponseWriter, r *http.Request) error {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(frenchItems)
+	return nil
+}
+
+// CATEGORY TABLE
+
+func getAllCategory(w http.ResponseWriter, r *http.Request) error {
+	categoryItems := []Category{}
+
+	err := db.Select(&categoryItems, "SELECT * FROM category")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		fmt.Println(err.Error())
+		return err
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(categoryItems)
+	return nil
+}
+
+func getCategory(w http.ResponseWriter, r *http.Request) error {
+	arguments := mux.Vars(r)
+	id := arguments["id"]
+
+	var category Category
+	err := db.Get(&category, "SELECT * FROM category WHERE id = $1", id)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Item not found", http.StatusNotFound)
+			return err
+		}
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(category)
+	return nil
+}
+
+func addCategory(w http.ResponseWriter, r *http.Request) error {
+	var category Category
+	err := json.NewDecoder(r.Body).Decode(&category)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return err
+	}
+
+	if helper.IsBlank(category.CategoryName) {
+		err = errors.New("Category name should not be empty")
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return err
+	}
+
+	query := "INSERT INTO category (category_name) VALUES ($1) RETURNING id"
+	err = db.QueryRow(query, category.CategoryName).Scan(&category.Id)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(category)
+	return nil
+}
+
+func updateCategory(w http.ResponseWriter, r *http.Request) error {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	var category Category
+	err := json.NewDecoder(r.Body).Decode(&category)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return err
+	}
+
+	if helper.IsBlank(category.CategoryName) {
+		err = errors.New("Category name should not be empty")
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return err
+	}
+
+	category.Id, _ = strconv.Atoi(id)
+
+	query := "UPDATE category SET category_name = :category_name WHERE id = :id"
+	result, err := db.NamedExec(query, &category)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	rowsAffected, _ := result.RowsAffected()
+	if rowsAffected == 0 {
+		http.Error(w, "Item not found", http.StatusNotFound)
+		return err
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(category)
+	return nil
+}
+
+func deleteCategory(w http.ResponseWriter, r *http.Request) error {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	result, err := db.Exec("DELETE FROM category WHERE id = $1", id)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return err
+	}
+
+	rowsAffected, _ := result.RowsAffected()
+	if rowsAffected == 0 {
+		http.Error(w, "Item not found", http.StatusNotFound)
+		return err
+	}
+
+	w.WriteHeader(http.StatusNoContent)
 	return nil
 }
