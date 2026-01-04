@@ -126,7 +126,7 @@ function FrenchExpressionCreation({ selectedWord, showTranslationsMenu, linkedAr
             {showTranslationsMenu && (
                 <>
                     <ArabicTranslations frenchId={createdWord?.id ?? null} />
-                    <FrenchCategoriesList frenchId={createdWord?.id ?? null}/>
+                    <FrenchCategoriesList frenchId={createdWord?.id ?? null} />
                 </>
             )}
             <button disabled={isSaveDisabled} onClick={saveAndReturn}>Save & return</button>
