@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import '../../App.css'
 import type { French } from '../../models/French';
 import ArabicTranslations from '../Arabic/ArabicTranslations';
-import FrenchCategories from './FrenchCategories';
+import FrenchCategoriesList from './FrenchCategoriesList';
 
 interface FrenchExpressionCreationProps {
     selectedWord: French | null,
@@ -126,7 +126,7 @@ function FrenchExpressionCreation({ selectedWord, showTranslationsMenu, linkedAr
             {showTranslationsMenu && (
                 <>
                     <ArabicTranslations frenchId={createdWord?.id ?? null} />
-                    <FrenchCategories frenchId={createdWord?.id ?? null}/>
+                    <FrenchCategoriesList frenchId={createdWord?.id ?? null}/>
                 </>
             )}
             <button disabled={isSaveDisabled} onClick={saveAndReturn}>Save & return</button>
