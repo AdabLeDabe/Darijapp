@@ -4,10 +4,11 @@ import WordDisplay from "../WordDisplay";
 
 interface FrenchCategoriesEditionProps {
     frenchId: number | null,
-    currentlySelectedCategories: Category[]
+    currentlySelectedCategories: Category[],
+    returnCallBack: () => void
 }
 
-function FrenchCategoriesEdition({ frenchId, currentlySelectedCategories }: FrenchCategoriesEditionProps) {
+function FrenchCategoriesEdition({ frenchId, currentlySelectedCategories, returnCallBack }: FrenchCategoriesEditionProps) {
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
@@ -31,6 +32,40 @@ function FrenchCategoriesEdition({ frenchId, currentlySelectedCategories }: Fren
         setSelectedCategories(currentlySelectedCategories);
     }, [frenchId]);
 
+    const addCategoryToFrenchWord = async (category: Category) => {
+        try {
+            const response = await fetch('api/expressions/french/' + frenchId + '/categories/' + category.id, {
+                method: 'POST'
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add category to french word');
+            }
+
+            const result = await response.json();
+            console.log(result);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const removeCategoryFromFrenchWord = async (category: Category) => {
+        try {
+            const response = await fetch('api/expressions/french/' + frenchId + '/categories/' + category.id, {
+                method: 'DELETE'
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to remove category from french word');
+            }
+
+            const result = await response.json();
+            console.log(result);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     const toggleSelection = (category: Category) => {
         setSelectedCategories(oldArray => {
             if (isCategorySelected(category)) {
@@ -46,6 +81,25 @@ function FrenchCategoriesEdition({ frenchId, currentlySelectedCategories }: Fren
         return selectedCategories.some(selected => selected.id === category.id);
     }
 
+    const OnSaveAndReturn = async () => {
+        const categoriesToRemove = currentlySelectedCategories.filter(currentlySelectedCategory => !selectedCategories.some(c => c.id == currentlySelectedCategory.id));
+        const categoriesToAdd = selectedCategories.filter(selectedCategory => !currentlySelectedCategories.some(c => c.id == selectedCategory.id));
+
+        console.log("categories to add: " + categoriesToAdd);
+        console.log("categories to remove: " + categoriesToRemove);
+        if (frenchId !== null) {
+            await Promise.all([
+                ...categoriesToRemove.map(c => removeCategoryFromFrenchWord(c)),
+                ...categoriesToAdd.map(c => addCategoryToFrenchWord(c))
+            ]);
+        }
+        else {
+            console.log("French id is null for some reason, no api calls are made");
+        }
+
+        returnCallBack();
+    }
+
     return (
         <div className="sub-container">
             <div className="category-list">
@@ -59,6 +113,7 @@ function FrenchCategoriesEdition({ frenchId, currentlySelectedCategories }: Fren
                     </div>
                 ))}
             </div>
+            <button onClick={async () => await OnSaveAndReturn()}>Save and return</button>
         </div>
     );
 }

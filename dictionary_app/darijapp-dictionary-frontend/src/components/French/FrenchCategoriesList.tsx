@@ -31,7 +31,7 @@ function FrenchCategoriesList({ frenchId: frenchId }: FrenchCategoriesListProps)
         };
 
         fetchData();
-    }, [frenchId]);
+    }, [frenchId, isCategoryEditionModalOpen]);
 
     // const unassignCategory = async () => {
     //     if (selectedCategory == null) {
@@ -74,7 +74,7 @@ function FrenchCategoriesList({ frenchId: frenchId }: FrenchCategoriesListProps)
                 <div className="modal-backdrop">
                     <DialogPanel className="modal-content">
                         <DialogTitle>Edit categories</DialogTitle>
-                        <FrenchCategoriesEdition frenchId={frenchId} currentlySelectedCategories={categories} />
+                        <FrenchCategoriesEdition frenchId={frenchId} currentlySelectedCategories={categories} returnCallBack={() => setIsCategoryEditionModalOpen(false)} />
                     </DialogPanel>
                 </div>
             </Dialog>
