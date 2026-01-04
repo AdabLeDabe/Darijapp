@@ -69,7 +69,7 @@ function ArabicTranslations({ frenchId }: ArabicTranslationsProps) {
             setSelectedTranslation(null);
             setArabicExpressions(arabicExpressions.filter(function (arabicExpression) {
                 return arabicExpression.id !== selectedTranslation?.id;
-            }))
+            }));
 
         } catch (err) {
             console.log(err);

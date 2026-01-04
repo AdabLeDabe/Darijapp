@@ -3,7 +3,7 @@ import '../../App.css'
 import type { ArabicWithTranslations } from '../../models/ArabicWithTranslations';
 import { GetVariantDisplay } from '../../helpers/ArabicDisplay';
 import FrenchWord from '../French/FrenchWord';
-import { filterStringsFlexibleSchwa, removeAccents } from '../../helpers/SearchHelper';
+import { filterStringsFlexibleSchwa } from '../../helpers/SearchHelper';
 import WordDisplay from '../WordDisplay';
 
 interface ArabicExpressionsListProps {
