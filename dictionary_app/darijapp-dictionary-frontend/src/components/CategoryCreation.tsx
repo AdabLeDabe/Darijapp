@@ -5,10 +5,15 @@ import WordDisplay from "./WordDisplay";
 function CategoryCreation() {
     const [categoriesList, setCategoriesList] = useState<Category[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+    const [createdCategoryName, setCreatedCategoryName] = useState<string>("");
 
     useEffect(() => {
         fetchData();
     }, []);
+
+    const updateCategoryName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCreatedCategoryName(e.target.value);
+    };
 
     const fetchData = async () => {
         try {
@@ -35,7 +40,7 @@ function CategoryCreation() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch');
+                throw new Error('Failed to delete category');
             }
 
             setCategoriesList(categoriesList.filter(c => c.id !== selectedCategory.id));
@@ -45,15 +50,39 @@ function CategoryCreation() {
         }
     };
 
+    const addCategory = async () => {
+        try {
+            const response = await fetch('/api/categories', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category_name: createdCategoryName
+                })
+            });
+
+            if (!response.ok)
+                throw new Error('Failed to create category');
+
+            const result = await response.json();
+            console.log('Success: ', result);
+
+            await fetchData();
+        } catch (error) {
+            console.log('Error: ', error)
+        }
+    }
+
     return (
         <>
             <div className="sub-container">
                 <h2>Add category</h2>
                 <div className='form-container'>
                     <label htmlFor='searchFilter'>Name:</label>
-                    <input name="searchFilter" type='text'></input>
+                    <input name="searchFilter" type='text' onChange={updateCategoryName}></input>
                 </div>
-                <button>Add</button>
+                <button onClick={() => addCategory()}>Add</button>
             </div>
             <div className="sub-container">
                 <h2>Edit categories</h2>
