@@ -33,28 +33,6 @@ function FrenchCategoriesList({ frenchId: frenchId }: FrenchCategoriesListProps)
         fetchData();
     }, [frenchId, isCategoryEditionModalOpen]);
 
-    // const unassignCategory = async () => {
-    //     if (selectedCategory == null) {
-    //         return;
-    //     }
-    //     try {
-    //         const response = await fetch('api/expressions/french/' + frenchId + '/categories/' + selectedCategory?.id, {
-    //             method: 'DELETE'
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('Failed to delete category from french word');
-    //         }
-
-    //         setCategories(categories.filter(function (category) {
-    //             return category.id !== selectedCategory?.id;
-    //         }));
-    //         setSelectedCategory(null);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
     return (
         <div className="sub-container">
             <h2>Categories</h2>

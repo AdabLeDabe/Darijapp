@@ -6,6 +6,7 @@ import EditionBar from './components/EditionBar';
 import ArabicExpressionCreation from './components/Arabic/ArabicExpressionCreation';
 import ArabicExpressionsList from './components/Arabic/ArabicExpressionsList';
 import type { ArabicWithTranslations } from './models/ArabicWithTranslations';
+import CategoryCreation from './components/CategoryCreation';
 
 function App() {
     const [isEditMode, setEditMode] = useState(false);
@@ -76,7 +77,11 @@ function App() {
                     </>
                 )
             case 2:
-                return (<></>);
+                return (
+                    <>
+                        <CategoryCreation />
+                    </>
+                );
             default:
                 return (<></>);
         }
@@ -91,10 +96,10 @@ function App() {
                         <div className={getToggleButtonClassName(1)} onClick={() => toggleMode(1)}>Arabic</div>
                         <div className={getToggleButtonClassName(2)} onClick={() => toggleMode(2)}>Categories</div>
                     </div>
-                    <div className='form-container'>
+                    {currentMode != 2 && <div className='form-container'>
                         <label htmlFor='searchFilter'>Search:</label>
                         <input name="searchFilter" type='text' onChange={updateSearchFilter}></input>
-                    </div>
+                    </div>}
                 </>
                 : <></>}
             <EditionBar isEditMode={isEditMode} addCallback={addCallback} returnCallBack={returnCallback} />
