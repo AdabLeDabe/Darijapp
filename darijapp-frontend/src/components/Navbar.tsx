@@ -1,4 +1,5 @@
 import menuIcon from "../assets/menu.svg"
+import "../styles/Navbar.css"
 
 function Navbar() {
     return (
