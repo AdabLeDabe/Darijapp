@@ -12,6 +12,13 @@ function App() {
                 <br />
                 <br />
                 <button className='btn btn-primary btn-big' type='button'>Commencez un quiz</button>
+                <br />
+                <br />
+                <div className='toggle-btn-container'>
+                    <div className='toggle-btn'>Maroc</div>
+                    <div className='toggle-btn toggle-btn-enabled'>Algérie</div>
+                    <div className='toggle-btn'>Tunisie</div>
+                </div>
             </div>
         </>
     )
