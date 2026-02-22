@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
+import ToggleButtonsDialect from './components/ToggleButtonsDialect';
 
 function App() {
+    const [selectedDialect, setSelectedDialect] = useState<string>(""); //Temporary
+
     return (
         <>
             <Navbar />
@@ -14,11 +18,11 @@ function App() {
                 <button className='btn btn-primary btn-big' type='button'>Commencez un quiz</button>
                 <br />
                 <br />
-                <div className='toggle-btn-container'>
-                    <div className='toggle-btn'>Maroc</div>
-                    <div className='toggle-btn toggle-btn-enabled'>Algérie</div>
-                    <div className='toggle-btn'>Tunisie</div>
-                </div>
+                <ToggleButtonsDialect
+                    selectionChangedCallback={setSelectedDialect}
+                    option1='Maroc'
+                    option2='Algérie'
+                    option3='Tunisie' />
             </div>
         </>
     )
