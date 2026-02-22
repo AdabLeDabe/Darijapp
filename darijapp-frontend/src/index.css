@@ -20,6 +20,8 @@
     --color-text: #281707;
     --color-text-light: white;
 
+    --color-border-light: #d3bfac;
+
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

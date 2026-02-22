@@ -1,14 +1,14 @@
 import { useState } from "react";
-import "../styles/ToggleButtonsDialect.css"
+import "../styles/ToggleButtons.css"
 
-interface ToggleButtonsDialectProps {
+interface ToggleButtonsProps {
     selectionChangedCallback: (option: string) => void,
     option1: string,
     option2: string,
     option3: string
 }
 
-function ToggleButtonsDialect({ selectionChangedCallback, option1, option2, option3 }: ToggleButtonsDialectProps) {
+function ToggleButtons({ selectionChangedCallback, option1, option2, option3 }: ToggleButtonsProps) {
     const [selectedOption, setSelectedOption] = useState<string>("");
 
     const selectOption = (option: string) => {
@@ -18,13 +18,13 @@ function ToggleButtonsDialect({ selectionChangedCallback, option1, option2, opti
 
     const getOptionClassName = (option: string) => {
         if (selectedOption === option)
-            return "toggle-btn-dialect toggle-btn-dialect-enabled";
+            return "toggle-btn toggle-btn-selected";
         else
-            return "toggle-btn-dialect"
+            return "toggle-btn"
     }
 
     return (
-        <div className='toggle-btn-dialect-container'>
+        <div className='toggle-btn-container'>
             <div onClick={() => selectOption(option1)} className={getOptionClassName(option1)}>{option1}</div>
             <div onClick={() => selectOption(option2)} className={getOptionClassName(option2)}>{option2}</div>
             <div onClick={() => selectOption(option3)} className={getOptionClassName(option3)}>{option3}</div>
@@ -32,4 +32,4 @@ function ToggleButtonsDialect({ selectionChangedCallback, option1, option2, opti
     )
 }
 
-export default ToggleButtonsDialect;
+export default ToggleButtons;

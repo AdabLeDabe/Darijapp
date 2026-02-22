@@ -1,10 +1,10 @@
-.toggle-btn-dialect-container {
+.toggle-btn-container {
     display: flex;
     border: 1px solid var(--color-text);
     border-left: 0px solid var(--color-text);
 }
 
-.toggle-btn-dialect {
+.toggle-btn {
     text-align: center;
     flex: 1;
     padding: 0.25rem;
@@ -14,7 +14,7 @@
     user-select: none;
 }
 
-.toggle-btn-dialect-enabled {
+.toggle-btn-selected {
     background-color: var(--color-main-orange);
     color: var(--color-text-light);
     box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
