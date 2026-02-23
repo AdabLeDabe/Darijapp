@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import ToggleButtons from './components/ToggleButtons';
 import AnswerButtons from './components/AnswerButtons';
+import AppButton from './components/AppButton';
 
 function App() {
     //Temporary states for testing
@@ -15,10 +16,13 @@ function App() {
             <div className='main-container'>
                 <h2>Enrichissez votre vocabulaire en darija !</h2>
                 <br />
-                <button className='btn btn-secondary btn-small' type='button'>Tout déselectionner</button>
+                <AppButton isBig={true}>Test</AppButton>
                 <br />
                 <br />
-                <button className='btn btn-primary btn-big' type='button'>Commencez un quiz</button>
+                <AppButton>Tout déselectionner</AppButton>
+                <br />
+                <br />
+                <AppButton isPrimary={true} isBig={true} hasArrow={true}>Commencez un quiz</AppButton>
                 <br />
                 <br />
                 <ToggleButtons
