@@ -5,6 +5,11 @@
     font-family: var(--font-serif);
     color: var(--color-text-light);
     box-shadow: 0.25rem 0.25rem 0.25rem 0px #00000033;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: relative;
 }
 
 .btn-big {
@@ -38,4 +43,11 @@
 
 .btn-secondary:active {
     background-color: var(--color-main-orange-pressed);
+}
+
+.btn-arrow {
+    position: absolute;
+    right: 0.75rem;
+    width: 1rem;
+    height: 1rem;
 }

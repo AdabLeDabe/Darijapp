@@ -1,4 +1,5 @@
 import "../styles/AppButton.css"
+import nextArrow from "../assets/next-arrow.svg"
 
 interface AppButtonProps {
     isPrimary?: boolean,
@@ -23,7 +24,16 @@ function AppButton({isPrimary = false, isBig = false, hasArrow = false, children
         return result;
     }
 
-    return <button className={getClassName()}>{children}</button>
+    const displayArrow = () => {
+        if (hasArrow) {
+            return <img src={nextArrow} alt="Arrow" aria-hidden="true" className="btn-arrow" />
+        }
+        else {
+            return <></>
+        }
+    }
+
+    return <button className={getClassName()}>{children}{displayArrow()}</button>
 }
 
 export default AppButton;
