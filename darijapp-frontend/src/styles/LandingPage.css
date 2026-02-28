@@ -7,6 +7,7 @@
     grid-template-rows: 1fr 1fr 1fr;
     min-height: 0;
     height: 100%;
+    padding: 2rem;
 }
 
 .landing-page-container div {
@@ -19,15 +20,24 @@
 
 .landing-page-container div.title-label {
     grid-area: title-label;
-    background-color: blue;
 }
 
 .landing-page-container div.dialect-selection {
     grid-area: dialect-selection;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
 }
 
 .landing-page-container div.start-button {
     grid-area: start-button;
-    background-color: orange;
+}
+
+.landing-page-container div.label {
+    font-size: small;
+    font-weight: 400;
+    text-align: center;
+    padding: 1rem;
 }
