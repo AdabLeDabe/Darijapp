@@ -1,0 +1,33 @@
+.landing-page-container {
+    display: grid;
+    grid-template-areas:
+        "title-label"
+        "dialect-selection"
+        "start-button";
+    grid-template-rows: 1fr 1fr 1fr;
+    min-height: 0;
+    height: 100%;
+}
+
+.landing-page-container div {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.landing-page-container div.title-label {
+    grid-area: title-label;
+    background-color: blue;
+}
+
+.landing-page-container div.dialect-selection {
+    grid-area: dialect-selection;
+    background-color: white;
+}
+
+.landing-page-container div.start-button {
+    grid-area: start-button;
+    background-color: orange;
+}

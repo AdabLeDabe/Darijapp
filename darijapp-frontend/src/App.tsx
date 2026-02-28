@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import ToggleButtons from './components/ToggleButtons';
 import AnswerButtons from './components/AnswerButtons';
 import AppButton from './components/AppButton';
+import LandingPage from './pages/LandingPage';
 
 function App() {
     //Temporary states for testing
@@ -12,8 +13,9 @@ function App() {
 
     return (
         <>
-            <Navbar />
-            <div className='main-container'>
+            <nav><Navbar /></nav>
+            <main><LandingPage /></main>
+            {/* <div className='main-container'>
                 <h2>Enrichissez votre vocabulaire en darija !</h2>
                 <br />
                 <AppButton isBig={true}>Test</AppButton>
@@ -36,7 +38,7 @@ function App() {
                 answer1="Je m'appelle"
                 answer2='Bonjour'
                 answer3='Au revoir'
-                answer4='Comment va-tu' />
+                answer4='Comment va-tu' /> */}
         </>
     )
 }
