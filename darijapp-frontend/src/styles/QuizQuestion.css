@@ -1,0 +1,49 @@
+.quiz-question-container {
+    display: grid;
+    grid-template-areas:
+        "question-label"
+        "transcript"
+        "answers"
+        "validation";
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    min-height: 0;
+    height: 100%;
+}
+
+.quiz-question-container div {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.quiz-question-container div.question-label {
+    grid-area: question-label;
+    padding: 2rem;
+}
+
+.quiz-question-container div.transcript {
+    grid-area: transcript;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.quiz-question-container div.answers {
+    grid-area: answers;
+}
+
+.quiz-question-container div.validation {
+    grid-area: validation;
+    padding: 2rem;
+}
+
+.quiz-question-container div.transcript-text {
+    font-size: xx-large;
+    font-weight: 500;
+    text-align: center;
+}
+
