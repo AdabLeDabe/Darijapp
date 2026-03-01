@@ -1,20 +1,31 @@
+import { useState } from "react";
 import AppButton from "../components/AppButton";
-import CategoryButton from "../components/CategoryButton";
+import CategoryList from "../components/CategoryList";
 import "../styles/QuizSelection.css"
 
 function QuizSelection() {
+    const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+    
+    const addOrRemoveCategory = (id: number) => {
+        let newSelectedCategories = [...selectedCategories];
+        if (newSelectedCategories.includes(id)) {
+            newSelectedCategories = newSelectedCategories.filter(item => item != id);
+        }
+        else {
+            newSelectedCategories.push(id);
+        }
+        setSelectedCategories(newSelectedCategories);
+    }
+
     return (
         <>
             <div className="quiz-selection-container">
                 <div className="selection-label">Sélectionnez une ou plusieurs thématiques:</div>
                 <div className="categories">
-                    <CategoryButton title="Test" description="Infect Itarod baroun, se noth as to que wild y thought a proppon they uporplop ime manit." id={0} />
-                    <CategoryButton title="Test" description="Infect Itarod baroun, se noth as to que wild y thought a proppon they uporplop ime manit." id={0} />
-                    <CategoryButton title="Test" description="Infect Itarod baroun, se noth as to que wild y thought a proppon they uporplop ime manit." id={0} />
-                    <CategoryButton title="Test" description="Infect Itarod baroun, se noth as to que wild y thought a proppon they uporplop ime manit." id={0} />
+                    <CategoryList selectedCategories={selectedCategories} updateSelectedCategories={addOrRemoveCategory}/>
                 </div>
                 <div className="unselect-menu">
-                    <div>Thématiques sélectionnées: 2</div>
+                    <div>Thématiques sélectionnées: {selectedCategories.length}</div>
                     <AppButton>Tout déselectionner</AppButton>
                 </div>
                 <div className="validation">
