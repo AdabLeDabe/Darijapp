@@ -1,0 +1,17 @@
+.category-buttons-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    background-color: var(--color-bg);
+    box-shadow: 0.25rem 0.25rem 0.25rem 0px #00000033;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.category-buttons-container .title {
+    width: 100%;
+    text-align: left;
+    font-size: large;
+    font-weight: 600;
+    text-align: left;
+}

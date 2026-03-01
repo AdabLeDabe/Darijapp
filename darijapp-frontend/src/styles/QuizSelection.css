@@ -26,13 +26,16 @@
 
 .quiz-selection-container div.categories {
     grid-area: categories;
-    /* display: flex;
+    padding: 0.5rem 1rem;
+    display: flex;
     flex-direction: column;
+    align-items: left;
     align-content: stretch;
-    align-items: stretch;
-    justify-content: flex-start; */
-    background-color: var(--color-main-orange);
+    justify-content: flex-start;
+    background-color: var(--color-secondary);
     box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
+    overflow: auto;
+    gap: 0.5rem;
 }
 
 .quiz-selection-container div.unselect-menu {
