@@ -17,6 +17,10 @@ function QuizSelection() {
         setSelectedCategories(newSelectedCategories);
     }
 
+    var unselectAll = () => {
+        setSelectedCategories([]);
+    }
+
     return (
         <>
             <div className="quiz-selection-container">
@@ -26,7 +30,7 @@ function QuizSelection() {
                 </div>
                 <div className="unselect-menu">
                     <div>Thématiques sélectionnées: {selectedCategories.length}</div>
-                    <AppButton>Tout déselectionner</AppButton>
+                    <AppButton onClick={unselectAll}>Tout déselectionner</AppButton>
                 </div>
                 <div className="validation">
                     <AppButton isBig={true} isPrimary={true} hasArrow={true}>Lancer le quiz</AppButton>

@@ -4,10 +4,11 @@ import nextArrow from "../assets/next-arrow.svg"
 interface AppButtonProps {
     isPrimary?: boolean,
     isBig?: boolean,
-    hasArrow?: boolean
+    hasArrow?: boolean,
+    onClick?: () => void
 }
 
-function AppButton({isPrimary = false, isBig = false, hasArrow = false, children} : React.PropsWithChildren<AppButtonProps>) {
+function AppButton({isPrimary = false, isBig = false, hasArrow = false, onClick: onClickCallback = undefined, children} : React.PropsWithChildren<AppButtonProps>) {
     const getClassName = () => {
         var result = "btn";
 
@@ -33,7 +34,14 @@ function AppButton({isPrimary = false, isBig = false, hasArrow = false, children
         }
     }
 
-    return <button className={getClassName()}>{children}{displayArrow()}</button>
+    const executeOnClick = () => {
+        console.log("suce mon chibre");
+        if (onClickCallback) {
+            onClickCallback();
+        }
+    }
+
+    return <button onClick={() => executeOnClick()} className={getClassName()}>{children}{displayArrow()}</button>
 }
 
 export default AppButton;
