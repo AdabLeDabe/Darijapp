@@ -6,6 +6,7 @@ import AnswerButtons from './components/AnswerButtons';
 import AppButton from './components/AppButton';
 import LandingPage from './pages/LandingPage';
 import QuizQuestion from './pages/QuizQuestion';
+import QuizSelection from './pages/QuizSelection';
 
 function App() {
     //Temporary states for testing
@@ -15,7 +16,7 @@ function App() {
     return (
         <>
             <nav><Navbar /></nav>
-            <main><QuizQuestion /></main>
+            <main><QuizSelection /></main>
             {/* <div className='main-container'>
                 <h2>Enrichissez votre vocabulaire en darija !</h2>
                 <br />

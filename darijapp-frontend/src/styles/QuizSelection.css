@@ -1,0 +1,49 @@
+.quiz-selection-container {
+    display: grid;
+    grid-template-areas:
+        "selection-label"
+        "categories"
+        "unselect-menu"
+        "validation";
+    grid-template-rows: auto 1fr auto auto;
+    min-height: 0;
+    height: 100%;
+}
+
+.quiz-selection-container div {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.quiz-selection-container div.selection-label {
+    grid-area: selection-label;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.quiz-selection-container div.categories {
+    grid-area: categories;
+    /* display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: flex-start; */
+    background-color: var(--color-main-orange);
+    box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
+}
+
+.quiz-selection-container div.unselect-menu {
+    grid-area: unselect-menu;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quiz-selection-container div.validation {
+    grid-area: validation;
+    padding: 1rem 2rem;
+}
