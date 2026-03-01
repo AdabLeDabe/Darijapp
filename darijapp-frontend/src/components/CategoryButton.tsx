@@ -11,7 +11,7 @@ function CategoryButton({id, title, description}: CategoryButtonProps) {
         <>
             <div className="category-buttons-container">
                 <div className="title">{title}</div>
-                <div>{description}</div>
+                <div className="description">{description}</div>
             </div>
         </>
     )
