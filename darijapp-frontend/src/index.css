@@ -28,10 +28,24 @@ html {
 
     --color-border-light: #d3bfac;
 
+    --color-scrollbar: #6f3f15FF;
+
     color: var(--color-text);
     background-color: var(--color-bg);
     margin: 0px;
     height: 100%;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) #00000000
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar);
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #00000000;
 }
 
 body {
