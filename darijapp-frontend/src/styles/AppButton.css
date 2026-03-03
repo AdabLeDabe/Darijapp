@@ -21,17 +21,6 @@
     padding: 0.125rem 0rem;
 }
 
-@media (min-width: 1024px) {
-    .btn-big {
-        font-size: x-large;
-    }
-
-    .btn-small {
-        font-size: larger;
-        padding: 0.125rem 0rem;
-    }
-}
-
 .btn-primary {
     background-color: var(--color-main-green);
 }
@@ -61,4 +50,21 @@
     right: 0.75rem;
     width: 1rem;
     height: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .btn-big {
+        font-size: x-large;
+    }
+
+    .btn-small {
+        font-size: larger;
+        padding: 0.125rem 0rem;
+    }
+
+    .btn-arrow {
+        right: 1rem;
+        width: 1.25rem;
+        height: 1.25rem;
+    }
 }

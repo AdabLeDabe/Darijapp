@@ -10,12 +10,6 @@
     padding: 2rem;
 }
 
-@media (min-width: 1024px) {
-    .landing-page-container {
-        padding: 0 20vw;
-    }
-}
-
 .landing-page-container div {
     display: flex;
     align-items: center;
@@ -37,22 +31,8 @@
     justify-content: flex-start;
 }
 
-@media (min-width: 1024px) {
-    .landing-page-container div.dialect-selection {
-        width: 30rem;
-        margin: auto;
-    }
-}
-
 .landing-page-container div.start-button {
     grid-area: start-button;
-}
-
-@media (min-width: 1024px) {
-    .landing-page-container div.start-button {
-        width: 25rem;
-        margin: auto;
-    }
 }
 
 .landing-page-container div.label {
@@ -63,6 +43,20 @@
 }
 
 @media (min-width: 1024px) {
+    .landing-page-container {
+        padding: 0 20vw;
+    }
+
+    .landing-page-container div.dialect-selection {
+        width: 30rem;
+        margin: auto;
+    }
+
+    .landing-page-container div.start-button {
+        width: 25rem;
+        margin: auto;
+    }
+
     .landing-page-container div.label {
         font-size: medium;
     }
