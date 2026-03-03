@@ -21,6 +21,17 @@
     padding: 0.125rem 0rem;
 }
 
+@media (min-width: 1024px) {
+    .btn-big {
+        font-size: x-large;
+    }
+
+    .btn-small {
+        font-size: larger;
+        padding: 0.125rem 0rem;
+    }
+}
+
 .btn-primary {
     background-color: var(--color-main-green);
 }

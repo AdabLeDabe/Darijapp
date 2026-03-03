@@ -50,7 +50,7 @@
 
 @media (min-width: 1024px) {
     .landing-page-container div.start-button {
-        width: 20rem;
+        width: 25rem;
         margin: auto;
     }
 }
@@ -60,4 +60,10 @@
     font-weight: 400;
     text-align: center;
     padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .landing-page-container div.label {
+        font-size: medium;
+    }
 }
