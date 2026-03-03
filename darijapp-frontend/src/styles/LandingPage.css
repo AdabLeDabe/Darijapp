@@ -39,7 +39,8 @@
 
 @media (min-width: 1024px) {
     .landing-page-container div.dialect-selection {
-        padding: 0 10vw;
+        width: 30rem;
+        margin: auto;
     }
 }
 
