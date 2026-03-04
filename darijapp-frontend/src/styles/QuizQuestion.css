@@ -38,7 +38,6 @@
 
 .quiz-question-container div.validation {
     grid-area: validation;
-    padding: 2rem;
 }
 
 .quiz-question-container div.transcript-text {
@@ -49,7 +48,6 @@
 
 @media (min-width: 768px) {
     .quiz-question-container {
-        width: 40vw;
         height: 80%;
         margin: auto;
     }
@@ -59,7 +57,7 @@
     }
 
     .quiz-question-container div.validation {
-        width: 25vw;
+        width: 20vw;
         margin: auto;
     }
 }
