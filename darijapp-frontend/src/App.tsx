@@ -9,14 +9,10 @@ import QuizQuestion from './pages/QuizQuestion';
 import QuizSelection from './pages/QuizSelection';
 
 function App() {
-    //Temporary states for testing
-    const [selectedDialect, setSelectedDialect] = useState<string>("");
-    const [selectedAnswer, setSelectedAnswer] = useState<string>("");
-
     return (
         <>
             <nav><Navbar /></nav>
-            <main><LandingPage /></main>
+            <main><QuizQuestion /></main>
         </>
     )
 }

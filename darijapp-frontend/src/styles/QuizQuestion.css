@@ -47,3 +47,19 @@
     text-align: center;
 }
 
+@media (min-width: 768px) {
+    .quiz-question-container {
+        width: 40vw;
+        height: 80%;
+        margin: auto;
+    }
+
+    .quiz-question-container div.transcript-text {
+        font-size: 3rem;
+    }
+
+    .quiz-question-container div.validation {
+        width: 25vw;
+        margin: auto;
+    }
+}
