@@ -12,7 +12,7 @@ function App() {
     return (
         <>
             <nav><Navbar /></nav>
-            <main><QuizQuestion /></main>
+            <main><QuizSelection /></main>
         </>
     )
 }
