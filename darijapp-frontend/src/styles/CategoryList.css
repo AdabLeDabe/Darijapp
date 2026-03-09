@@ -4,7 +4,8 @@
     flex-direction: column;
     background-color: var(--color-secondary);
     gap: 0.5rem;
-    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
     box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
     overflow: auto;
 }
@@ -45,17 +46,9 @@
     .category-list-container {
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: stretch;
     }
 
     .category-button-container {
-        flex: 0 0 calc(50% - 8px);
-        display: flex;
-        flex-direction: column;
-        align-self: stretch;
-        justify-items: flex-start;
-        justify-content: flex-start;
-        align-items: flex-start;
-        align-content: flex-start;
+        flex: 0 0 calc(50% - 0.25rem);
     }
 }
