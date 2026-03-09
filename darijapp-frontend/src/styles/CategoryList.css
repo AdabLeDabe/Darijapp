@@ -46,6 +46,7 @@
     .category-list-container {
         flex-direction: row;
         flex-wrap: wrap;
+        align-content: space-between;
     }
 
     .category-button-container {
