@@ -7,12 +7,13 @@ import AppButton from './components/AppButton';
 import LandingPage from './pages/LandingPage';
 import QuizQuestion from './pages/QuizQuestion';
 import QuizSelection from './pages/QuizSelection';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
     return (
         <>
             <nav><Navbar /></nav>
-            <main><QuizSelection /></main>
+            <main><SettingsPage /></main>
         </>
     )
 }

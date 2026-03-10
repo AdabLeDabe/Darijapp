@@ -14,6 +14,12 @@ h2 {
     text-align: center;
 }
 
+.transcript-text {
+    font-size: xx-large;
+    font-weight: 500;
+    text-align: center;
+}
+
 @media (min-width: 1024px) {
     h2 {
         font-size: x-large;
