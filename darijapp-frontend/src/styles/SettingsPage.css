@@ -34,6 +34,10 @@
         font-size: small;
         padding: 0 0.5rem;
     }
+
+    input[type="radio"] {
+        accent-color: var(--color-main-orange);
+    }
 }
 
 .settings-page-container div.vowel-type {
