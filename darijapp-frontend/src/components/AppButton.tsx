@@ -35,7 +35,6 @@ function AppButton({isPrimary = false, isBig = false, hasArrow = false, onClick:
     }
 
     const executeOnClick = () => {
-        console.log("suce mon chibre");
         if (onClickCallback) {
             onClickCallback();
         }
