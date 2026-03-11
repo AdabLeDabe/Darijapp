@@ -13,7 +13,9 @@ function SettingsPage() {
             <div className="settings-page-container">
                 <div className="dialect-selection">
                     <div className="label">Dialecte de préférence</div>
-                    <ToggleButtons selectionChangedCallback={setSelectedDialect} option1="Maroc" option2="Algérie" option3="Tunisie" />
+                    <div className="toggle-button">
+                        <ToggleButtons selectionChangedCallback={setSelectedDialect} option1="Maroc" option2="Algérie" option3="Tunisie" />
+                    </div>
                 </div>
                 <div className="display-type">
                     <div className="label">Affichage des expressions</div>

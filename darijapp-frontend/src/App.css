@@ -20,8 +20,12 @@ h2 {
     text-align: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     h2 {
         font-size: x-large;
+    }
+
+    .transcript-text {
+        font-size: 3rem;
     }
 }
