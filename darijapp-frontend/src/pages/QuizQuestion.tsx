@@ -2,6 +2,7 @@ import { useState } from "react";
 import AnswerButtons from "../components/AnswerButtons";
 import "../styles/QuizQuestion.css"
 import AppButton from "../components/AppButton";
+import TranscriptDisplay from "../components/TranscriptDisplay";
 
 function QuizQuestion() {
     const [selectedAnswer, setSelectedAnswer] = useState<string>("");
@@ -12,10 +13,7 @@ function QuizQuestion() {
                 <div className="question-label">
                     <h2>Traduisez l'expression suivante en français:</h2>
                 </div>
-                <div className="transcript">
-                    <div className="transcript-text">ṣbāḥ-əl-ẖīr</div>
-                    <div className="transcript-text">صباح الخير</div>
-                </div>
+                <TranscriptDisplay />
                 <div className="answers">
                     <AnswerButtons
                         selectionChangedCallback={setSelectedAnswer}

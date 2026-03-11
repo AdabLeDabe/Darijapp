@@ -3,6 +3,7 @@ import { useState } from "react";
 import ToggleButtons from "../components/ToggleButtons";
 import ReactSwitch from "react-switch";
 import { getCssVar } from "../helpers/CssHelper";
+import TranscriptDisplay from "../components/TranscriptDisplay";
 
 function SettingsPage() {
     const [selectedDialect, setSelectedDialect] = useState<string>("");
@@ -52,9 +53,8 @@ function SettingsPage() {
                 </div>
                 <div className="preview">
                     <h2>Aperçu</h2>
-                    <div className="transcript">
-                        <div className="transcript-text">ṣbāḥ-əl-ẖīr</div>
-                        <div className="transcript-text">صباح الخير</div>
+                    <div className="transcript-display">
+                        <TranscriptDisplay />
                     </div>
                 </div>
             </div>
