@@ -13,7 +13,7 @@ function App() {
     return (
         <>
             <nav><Navbar /></nav>
-            <main><QuizQuestion /></main>
+            <main><SettingsPage /></main>
         </>
     )
 }

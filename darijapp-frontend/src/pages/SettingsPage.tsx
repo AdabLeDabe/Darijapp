@@ -54,7 +54,7 @@ function SettingsPage() {
                 <div className="preview">
                     <h2>Aperçu</h2>
                     <div className="transcript-display">
-                        <TranscriptDisplay />
+                        <TranscriptDisplay shortVowels={showShortVowels} mode={0}/>
                     </div>
                 </div>
             </div>
