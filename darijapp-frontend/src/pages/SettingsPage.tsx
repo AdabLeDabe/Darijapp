@@ -73,7 +73,9 @@ function SettingsPage() {
                 <div className="preview">
                     <h2>Aperçu</h2>
                     <div className="transcript-display">
-                        <TranscriptDisplay />
+                        <TranscriptDisplay
+                        displayTypeState={{value: displayType, setValue: setDisplayType}}
+                        shortVowelsState={{value: showShortVowels, setValue: setShowShortVowels}} />
                     </div>
                 </div>
             </div>

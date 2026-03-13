@@ -1,13 +1,19 @@
 import { useLocalStorageState } from "../helpers/AppCache";
 import { removeArabicShortVowels } from "../helpers/ArabicHelper";
 import type { DisplayType } from "../helpers/DisplayType";
+import type { StateObject } from "../helpers/StateObject";
 import "../styles/TranscriptDisplay.css"
 
-function TranscriptDisplay() {
+interface TranscriptDisplayProps {
+    shortVowelsState?: StateObject<boolean> | null,
+    displayTypeState?: StateObject<DisplayType> | null
+}
+
+function TranscriptDisplay({ shortVowelsState = null, displayTypeState = null}: TranscriptDisplayProps) {
     const phoneticString = "əs-salām-u ɛlay-kum";
     const arabicString = "السَّلَامُ عَلَيكُم";
-    const [showShortVowels, setShowShortVowels] = useLocalStorageState("display-short-vowels", true);
-    const [displayType, setDisplayType] = useLocalStorageState<DisplayType>("display-type", "both");
+    const [showShortVowels, setShowShortVowels] = shortVowelsState ? [shortVowelsState.value, shortVowelsState.setValue] : useLocalStorageState("display-short-vowels", true);
+    const [displayType, setDisplayType] = displayTypeState ? [displayTypeState.value, displayTypeState.setValue] : useLocalStorageState<DisplayType>("display-type", "both");
 
     const displayPhonetic = () => {
         return <div className="transcript-text">{phoneticString}</div>;
