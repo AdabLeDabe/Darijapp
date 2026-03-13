@@ -1,9 +1,10 @@
 import { removeArabicShortVowels } from "../helpers/ArabicHelper";
+import type { DisplayType } from "../helpers/DisplayType";
 import "../styles/TranscriptDisplay.css"
 
 interface TranscriptDisplayProps {
     shortVowels: boolean,
-    mode: number
+    mode: DisplayType
 }
 
 function TranscriptDisplay({ shortVowels, mode }: TranscriptDisplayProps) {
@@ -23,9 +24,9 @@ function TranscriptDisplay({ shortVowels, mode }: TranscriptDisplayProps) {
 
     const displayTranscript = () => {
         switch (mode) {
-            case 1:
+            case "phonetic":
                 return <>{displayPhonetic()}</>
-            case 2:
+            case "arabic":
                 return <>{displayArabic()}</>
             default:
                 return (
