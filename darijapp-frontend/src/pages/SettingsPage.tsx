@@ -7,7 +7,6 @@ import { useLocalStorageState } from "../helpers/AppCache";
 import type { DisplayType } from "../helpers/DisplayType";
 
 function SettingsPage() {
-    const [selectedDialect, setSelectedDialect] = useLocalStorageState("dialect", "Algérie");
     const [showShortVowels, setShowShortVowels] = useLocalStorageState("display-short-vowels", true);
     const [displayType, setDisplayType] = useLocalStorageState<DisplayType>("display-type", "both");
 
@@ -17,7 +16,7 @@ function SettingsPage() {
                 <div className="dialect-selection">
                     <div className="label">Dialecte de préférence</div>
                     <div className="toggle-button">
-                        <ToggleButtons selectionChangedCallback={setSelectedDialect} option1="Maroc" option2="Algérie" option3="Tunisie" />
+                        <ToggleButtons option1="Maroc" option2="Algérie" option3="Tunisie" />
                     </div>
                 </div>
                 <div className="display-type">
@@ -74,7 +73,7 @@ function SettingsPage() {
                 <div className="preview">
                     <h2>Aperçu</h2>
                     <div className="transcript-display">
-                        <TranscriptDisplay shortVowels={showShortVowels} mode={displayType} />
+                        <TranscriptDisplay />
                     </div>
                 </div>
             </div>

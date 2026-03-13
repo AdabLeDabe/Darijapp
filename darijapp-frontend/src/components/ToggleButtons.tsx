@@ -1,19 +1,17 @@
-import { useState } from "react";
 import "../styles/ToggleButtons.css"
+import { useLocalStorageState } from "../helpers/AppCache";
 
 interface ToggleButtonsProps {
-    selectionChangedCallback: (option: string) => void,
     option1: string,
     option2: string,
     option3: string
 }
 
-function ToggleButtons({ selectionChangedCallback, option1, option2, option3 }: ToggleButtonsProps) {
-    const [selectedOption, setSelectedOption] = useState<string>("");
+function ToggleButtons({ option1, option2, option3 }: ToggleButtonsProps) {
+    const [selectedOption, setSelectedOption] = useLocalStorageState("dialect", "");
 
     const selectOption = (option: string) => {
         setSelectedOption(option);
-        selectionChangedCallback(option);
     }
 
     const getOptionClassName = (option: string) => {
