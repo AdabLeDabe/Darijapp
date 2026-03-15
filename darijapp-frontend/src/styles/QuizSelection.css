@@ -5,8 +5,8 @@
         "categories"
         "unselect-menu"
         "validation";
-    grid-template-rows: auto 1fr auto auto;
-    height: 100%;
+    grid-template-rows: auto auto auto auto;
+    height: 90vh;
 }
 
 .quiz-selection-container div.selection-label {

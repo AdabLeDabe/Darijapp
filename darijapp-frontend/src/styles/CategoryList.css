@@ -4,10 +4,9 @@
     flex-direction: column;
     background-color: var(--color-secondary);
     gap: 0.5rem;
-    min-height: 100%;
-    max-height: 100%;
     box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
     overflow: auto;
+    max-height: 100%;
 }
 
 .category-button-container {
