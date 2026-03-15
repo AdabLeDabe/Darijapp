@@ -10,7 +10,7 @@ function App() {
         <>
             <nav><Navbar menuOpenState={{value: navMenuOpen, setValue: setNavMenuOpen}} /></nav>
             <main>
-                {navMenuOpen ? <NavbarMenu /> : <></>}
+                {navMenuOpen ? <NavbarMenu menuOpenState={{value: navMenuOpen, setValue: setNavMenuOpen}}/> : <></>}
                 <SettingsPage />
             </main>
         </>
