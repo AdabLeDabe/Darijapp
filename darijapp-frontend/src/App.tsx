@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
-import ToggleButtons from './components/ToggleButtons';
-import AnswerButtons from './components/AnswerButtons';
-import AppButton from './components/AppButton';
-import LandingPage from './pages/LandingPage';
-import QuizQuestion from './pages/QuizQuestion';
-import QuizSelection from './pages/QuizSelection';
 import SettingsPage from './pages/SettingsPage';
+import NavbarMenu from './components/NavBarMenu';
 
 function App() {
+    const [navMenuOpen, setNavMenuOpen] = useState<boolean>(false);
     return (
         <>
-            <nav><Navbar /></nav>
-            <main><SettingsPage /></main>
+            <nav><Navbar menuOpenState={{value: navMenuOpen, setValue: setNavMenuOpen}} /></nav>
+            <main>
+                {navMenuOpen ? <NavbarMenu /> : <></>}
+                <SettingsPage />
+            </main>
         </>
     )
 }
