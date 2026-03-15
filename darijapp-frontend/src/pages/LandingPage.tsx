@@ -1,8 +1,15 @@
 import ToggleButtons from "../components/ToggleButtons";
 import "../styles/LandingPage.css"
 import AppButton from "../components/AppButton";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+    const navigate = useNavigate();
+
+    const changePage = (page: string) => {
+        navigate(page);
+    }
+
     return (
         <>
             <div className="landing-page-container">
@@ -17,7 +24,7 @@ function LandingPage() {
                         option3='Tunisie' />
                 </div>
                 <div className="start-button">
-                    <AppButton isPrimary={true} isBig={true} hasArrow={true}>Commencer un quiz</AppButton>
+                    <AppButton isPrimary={true} isBig={true} hasArrow={true} onClick={() => navigate("/quiz")}>Commencer un quiz</AppButton>
                 </div>
             </div>
         </>
