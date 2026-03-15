@@ -8,10 +8,12 @@ function App() {
     const [navMenuOpen, setNavMenuOpen] = useState<boolean>(false);
     return (
         <>
-            <nav><Navbar menuOpenState={{value: navMenuOpen, setValue: setNavMenuOpen}} /></nav>
+            <nav><Navbar menuOpenState={{ value: navMenuOpen, setValue: setNavMenuOpen }} /></nav>
             <main>
-                {navMenuOpen ? <NavbarMenu menuOpenState={{value: navMenuOpen, setValue: setNavMenuOpen}}/> : <></>}
-                <SettingsPage />
+                {navMenuOpen ? <NavbarMenu menuOpenState={{ value: navMenuOpen, setValue: setNavMenuOpen }} /> : <></>}
+                <div onClick={() => setNavMenuOpen(false)}>
+                    <SettingsPage />
+                </div>
             </main>
         </>
     )

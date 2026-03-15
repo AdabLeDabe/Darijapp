@@ -26,17 +26,15 @@ function SettingsPage() {
                         <input
                             type="radio"
                             id="phonetic_arabic"
-                            name="display-type"
                             value="both"
                             checked={displayType === "both"}
                             onChange={(e) => setDisplayType(e.target.value as DisplayType)} />
-                        <label htmlFor="phoentic_araibc">Phonétique et arabe</label>
+                        <label htmlFor="phonetic_arabic">Phonétique et arabe</label>
                     </div>
                     <div>
                         <input
                             type="radio"
                             id="phonetic_only"
-                            name="display-type"
                             value="phonetic"
                             checked={displayType === "phonetic"}
                             onChange={(e) => setDisplayType(e.target.value as DisplayType)} />
@@ -46,7 +44,6 @@ function SettingsPage() {
                         <input
                             type="radio"
                             id="arabic_only"
-                            name="display-type"
                             value="arabic"
                             checked={displayType === "arabic"}
                             onChange={(e) => setDisplayType(e.target.value as DisplayType)} />
