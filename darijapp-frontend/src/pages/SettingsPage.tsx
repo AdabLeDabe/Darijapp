@@ -4,7 +4,7 @@ import ReactSwitch from "react-switch";
 import { getCssVar } from "../helpers/CssHelper";
 import TranscriptDisplay from "../components/TranscriptDisplay";
 import { useLocalStorageState } from "../helpers/AppCache";
-import type { DisplayType } from "../helpers/DisplayType";
+import type { DisplayType } from "../helpers/Types";
 
 function SettingsPage() {
     const [showShortVowels, setShowShortVowels] = useLocalStorageState("display-short-vowels", true);

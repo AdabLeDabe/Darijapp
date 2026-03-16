@@ -1,8 +1,8 @@
 import { useLocalStorageState } from "../helpers/AppCache";
 import { removeArabicShortVowels } from "../helpers/ArabicHelper";
-import type { DisplayType } from "../helpers/DisplayType";
 import type { StateObject } from "../helpers/StateObject";
 import "../styles/TranscriptDisplay.css"
+import type { DisplayType } from "../helpers/Types";
 
 interface TranscriptDisplayProps {
     shortVowelsState?: StateObject<boolean> | null,

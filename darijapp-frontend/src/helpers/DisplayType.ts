@@ -1,1 +1,0 @@
-export type DisplayType = "both" | "phonetic" | "arabic";
