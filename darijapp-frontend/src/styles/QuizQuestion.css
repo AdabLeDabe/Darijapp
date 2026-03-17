@@ -5,31 +5,17 @@
         "transcript"
         "answers"
         "validation";
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    min-height: 0;
+    grid-template-rows: auto 0.5fr auto auto;
     height: 100%;
-}
-
-.quiz-question-container div {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    align-content: center;
 }
 
 .quiz-question-container div.question-label {
     grid-area: question-label;
-    padding: 2rem;
+    padding-top: 2rem;
 }
 
 .quiz-question-container div.transcript {
     grid-area: transcript;
-    display: flex;
-    flex-direction: column;
-    align-content: stretch;
-    align-items: stretch;
-    justify-content: flex-start;
 }
 
 .quiz-question-container div.answers {
@@ -38,6 +24,9 @@
 
 .quiz-question-container div.validation {
     grid-area: validation;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 768px) {

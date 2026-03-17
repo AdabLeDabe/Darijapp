@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/AnswerButtons.css"
+import TranscriptDisplay from "./TranscriptDisplay";
 
 interface AnswerButtonsProps {
     selectionChangedCallback: (option: string) => void,
@@ -26,7 +27,9 @@ function AnswerButtons({selectionChangedCallback, answer1, answer2, answer3, ans
 
     return (
         <div className='answers-container'>
-            <div onClick={() => selectOption(answer1)} className={getOptionClassName(answer1)}>{answer1}</div>
+            <div onClick={() => selectOption(answer1)} className={getOptionClassName(answer1)}>
+                <TranscriptDisplay isSmall={true} expression={{phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم"}} />
+            </div>
             <div onClick={() => selectOption(answer2)} className={getOptionClassName(answer2)}>{answer2}</div>
             <div onClick={() => selectOption(answer3)} className={getOptionClassName(answer3)}>{answer3}</div>
             <div onClick={() => selectOption(answer4)} className={getOptionClassName(answer4)}>{answer4}</div>

@@ -5,6 +5,9 @@ nav {
 main {
     grid-row: 2;
     min-height: 0;
+    .route-container {
+        height: 100%;
+    }
 }
 
 h2 {
