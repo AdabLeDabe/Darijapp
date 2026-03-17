@@ -13,7 +13,7 @@ function QuizQuestion() {
                 <div className="question-label">
                     <h2>Traduisez l'expression suivante en français:</h2>
                 </div>
-                <TranscriptDisplay />
+                <TranscriptDisplay expression={{phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم"}} />
                 <div className="answers">
                     <AnswerButtons
                         selectionChangedCallback={setSelectedAnswer}

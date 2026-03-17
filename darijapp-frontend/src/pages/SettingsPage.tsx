@@ -71,6 +71,7 @@ function SettingsPage() {
                     <h2>Aperçu</h2>
                     <div className="transcript-display">
                         <TranscriptDisplay
+                        expression={{phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم"}}
                         displayTypeState={{value: displayType, setValue: setDisplayType}}
                         shortVowelsState={{value: showShortVowels, setValue: setShowShortVowels}} />
                     </div>
