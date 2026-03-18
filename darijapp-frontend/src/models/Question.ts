@@ -1,21 +1,38 @@
 import type { QuestionType } from "../helpers/Types";
 import type { ArabicExpression } from "./ArabicExpression";
 
-export interface QuestionF2A {
+export interface Question {
     type: QuestionType,
-    expression: string
-    correctAnswer: ArabicExpression,
-    otherAnswers: ArabicExpression[]
-};
+    expression: string | ArabicExpression,
+    correctExpression: string | ArabicExpression,
+    otherExpressions: string[] | ArabicExpression[]
+}
 
-export interface QuestionA2F {
-    type: QuestionType,
-    expression: ArabicExpression,
-    correctAnswer: string,
-    otherAnswers: string[]
-};
+export interface Answer {
+    id: number,
+    expression: string | ArabicExpression
+}
 
-export function GetShuffledAnswers<T>(correctAnswer: T, otherAnswers: T[]): T[] {
-    const answers = [...otherAnswers, correctAnswer];
-    return answers.sort(() => Math.random() - 0.5);
+function IsArabicExpression(answer: any): answer is ArabicExpression {
+    return answer.phonetic !== undefined;
+}
+
+export function DisplayExpression(answer: Answer) {
+    if (IsArabicExpression(answer.expression)) {
+        return answer.expression.arabic + " " + answer.expression.phonetic;
+    }
+    else {
+        return answer.expression;
+    }
+}
+
+export function GetShuffledAnswers(correctExpression: string | ArabicExpression, otherExpressions: string[] | ArabicExpression[]): Answer[] {
+    const expressions = [...otherExpressions, correctExpression];
+    var shuffledExpressions = expressions.sort(() => Math.random() - 0.5);
+    return [
+        {id: 0, expression: shuffledExpressions[0]},
+        {id: 1, expression: shuffledExpressions[1]},
+        {id: 2, expression: shuffledExpressions[2]},
+        {id: 3, expression: shuffledExpressions[3]}
+    ];
 }
