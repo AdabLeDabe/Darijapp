@@ -1,4 +1,5 @@
 import type { Category } from "../models/Category";
+import type { Question } from "../models/Question";
 
 export function GetCategories(): Category[] {
     // Temporary
@@ -14,6 +15,76 @@ export function GetCategories(): Category[] {
     ]);
 }
 
-export function GetQuestions(categoriesIds: number[]) {
-
+export function GetQuestions(categoriesIds: number[]): Question[] {
+    return [
+        {
+            type: "A2F",
+            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
+            correctExpression:
+            {
+                phonetic: "ṣbāḥ-əl-ẖīr",
+                arabic: "صباح الخير"
+            },
+            otherExpressions: [
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "ẖədma",
+                    arabic: "خِدمة"
+                }
+            ]
+        },
+        {
+            type: "A2F",
+            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
+            correctExpression:
+            {
+                phonetic: "ṣbāḥ-əl-ẖīr",
+                arabic: "صباح الخير"
+            },
+            otherExpressions: [
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "ẖədma",
+                    arabic: "خِدمة"
+                }
+            ]
+        },
+        {
+            type: "A2F",
+            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
+            correctExpression:
+            {
+                phonetic: "ṣbāḥ-əl-ẖīr",
+                arabic: "صباح الخير"
+            },
+            otherExpressions: [
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "əs-salām-u ɛlay-kum",
+                    arabic: "السَّلَامُ عَلَيكُم"
+                },
+                {
+                    phonetic: "ẖədma",
+                    arabic: "خِدمة"
+                }
+            ]
+        }
+    ]
 }

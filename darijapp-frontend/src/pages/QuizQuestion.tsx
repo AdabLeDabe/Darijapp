@@ -5,33 +5,13 @@ import AppButton from "../components/AppButton";
 import TranscriptDisplay from "../components/TranscriptDisplay";
 import { GetShuffledAnswers, type Answer, type Question } from "../models/Question";
 
-function QuizQuestion() {
+interface QuizQuestionProps {
+    question: Question
+}
+
+function QuizQuestion({ question }: QuizQuestionProps) {
     const [answers, setAnswers] = useState<Answer[]>([]);
     const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null);
-    const question: Question =
-    {
-        type: "A2F",
-        expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
-        correctExpression:
-        {
-            phonetic: "ṣbāḥ-əl-ẖīr",
-            arabic: "صباح الخير"
-        },
-        otherExpressions: [
-            {
-                phonetic: "əs-salām-u ɛlay-kum",
-                arabic: "السَّلَامُ عَلَيكُم"
-            },
-            {
-                phonetic: "əs-salām-u ɛlay-kum",
-                arabic: "السَّلَامُ عَلَيكُم"
-            },
-            {
-                phonetic: "ẖədma",
-                arabic: "خِدمة"
-            }
-        ]
-    }; // Temporary of course
 
     useEffect(() => {
         setAnswers(GetShuffledAnswers(question.correctExpression, question.otherExpressions));
