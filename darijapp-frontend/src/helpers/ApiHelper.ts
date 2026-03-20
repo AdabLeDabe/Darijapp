@@ -27,7 +27,7 @@ export function GetQuestions(categoriesIds: number[]): Question[] {
             },
             otherExpressions: [
                 {
-                    phonetic: "əs-salām-u ɛlay-kum",
+                    phonetic: "əs-salām-u ɛlay-kumaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     arabic: "السَّلَامُ عَلَيكُم"
                 },
                 {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../styles/AnswerButtons.css"
 import { DisplayExpression as DisplayAnswer, type Answer } from "../models/Question";
 import type { StateObject } from "../helpers/StateObject";
+import { FitText } from "./FitText";
 
 interface AnswerButtonsProps {
     answers: Answer[],
@@ -21,7 +22,7 @@ function AnswerButtons({answers, selectedAnswerState}: AnswerButtonsProps) {
     return (
         <div className='answers-container'>
             {answers.map(answer =>
-                <div onClick={() => setSelectedAnswer(answer)} className={getOptionClassName(answer)}>{DisplayAnswer(answer)}</div>
+                <div onClick={() => setSelectedAnswer(answer)} key={answer.id} className={getOptionClassName(answer)}> <FitText text={DisplayAnswer(answer)} /></div>
             )}
         </div>
     )
