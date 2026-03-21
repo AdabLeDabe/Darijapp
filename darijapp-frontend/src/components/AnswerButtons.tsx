@@ -9,7 +9,7 @@ interface AnswerButtonsProps {
     selectedAnswerState: StateObject<Answer | null>
 }
 
-function AnswerButtons({answers, selectedAnswerState}: AnswerButtonsProps) {
+function AnswerButtons({ answers, selectedAnswerState }: AnswerButtonsProps) {
     const [selectedAnswer, setSelectedAnswer] = selectedAnswerState ? [selectedAnswerState.value, selectedAnswerState.setValue] : useState<Answer | null>(null);
 
     const getOptionClassName = (answer: Answer) => {
@@ -22,7 +22,9 @@ function AnswerButtons({answers, selectedAnswerState}: AnswerButtonsProps) {
     return (
         <div className='answers-container'>
             {answers.map(answer =>
-                <div onClick={() => setSelectedAnswer(answer)} key={answer.id} className={getOptionClassName(answer)}> <FitText text={DisplayAnswer(answer)} /></div>
+                <div onClick={() => setSelectedAnswer(answer)} key={answer.id} className={getOptionClassName(answer)}>
+                    {DisplayAnswer(answer)}
+                </div>
             )}
         </div>
     )

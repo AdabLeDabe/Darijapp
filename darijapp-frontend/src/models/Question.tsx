@@ -1,3 +1,4 @@
+import { FitText } from "../components/FitText";
 import type { QuestionType } from "../helpers/Types";
 import type { ArabicExpression } from "./ArabicExpression";
 
@@ -13,16 +14,25 @@ export interface Answer {
     expression: string | ArabicExpression
 }
 
-function IsArabicExpression(answer: any): answer is ArabicExpression {
+export function IsArabicExpression(answer: any): answer is ArabicExpression {
     return answer.phonetic !== undefined;
 }
 
 export function DisplayExpression(answer: Answer) {
     if (IsArabicExpression(answer.expression)) {
-        return answer.expression.arabic + " " + answer.expression.phonetic;
+        return (
+            <>
+                <FitText text={answer.expression.phonetic} />
+                <div>{answer.expression.arabic}</div>
+            </>
+        );
     }
     else {
-        return answer.expression;
+        return (
+            <>
+                <FitText text={answer.expression} />
+            </>
+        )
     }
 }
 
@@ -30,9 +40,9 @@ export function GetShuffledAnswers(correctExpression: string | ArabicExpression,
     const expressions = [...otherExpressions, correctExpression];
     var shuffledExpressions = expressions.sort(() => Math.random() - 0.5);
     return [
-        {id: 0, expression: shuffledExpressions[0]},
-        {id: 1, expression: shuffledExpressions[1]},
-        {id: 2, expression: shuffledExpressions[2]},
-        {id: 3, expression: shuffledExpressions[3]}
+        { id: 0, expression: shuffledExpressions[0] },
+        { id: 1, expression: shuffledExpressions[1] },
+        { id: 2, expression: shuffledExpressions[2] },
+        { id: 3, expression: shuffledExpressions[3] }
     ];
 }
