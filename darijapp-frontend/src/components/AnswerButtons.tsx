@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../styles/AnswerButtons.css"
 import { DisplayExpression as DisplayAnswer, type Answer } from "../models/Question";
 import type { StateObject } from "../helpers/StateObject";
-import { FitText } from "./FitText";
 
 interface AnswerButtonsProps {
     answers: Answer[],

@@ -35,6 +35,11 @@
         margin: auto;
     }
 
+    .quiz-question-container div.answers {
+        display: flex;
+        justify-content: center;
+    }
+
     .quiz-question-container div.validation {
         width: 25rem;
         margin: auto;
