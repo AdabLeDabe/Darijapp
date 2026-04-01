@@ -15,16 +15,19 @@ html {
     --color-main-green: #606c38;
     --color-main-green-hover: #7d8d47;
     --color-main-green-pressed: #566132;
+    --color-main-green-disabled: #666956;
 
     --color-main-orange: #bc6c25;
     --color-main-orange-hover: #d17727;
     --color-main-orange-pressed: #a35e21;
+    --color-main-orange-disabled: #96795f;
 
     --color-secondary: #dda15e;
 
     --color-bg: #fefae0;
     --color-text: #281707;
     --color-text-light: white;
+    --color-text-light-disabled: #acacac;
 
     --color-border-light: #d3bfac;
 

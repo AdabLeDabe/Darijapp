@@ -25,6 +25,16 @@
     background-color: var(--color-main-green);
 }
 
+.btn-primary:disabled {
+    background-color: var(--color-main-green-disabled);
+    color: var(--color-text-light-disabled)
+}
+
+.btn-primary[disabled]:hover {
+    background-color: var(--color-main-green-disabled);
+    color: var(--color-text-light-disabled)
+}
+
 .btn-primary:hover {
     background-color: var(--color-main-green-hover);
 }
@@ -35,6 +45,16 @@
 
 .btn-secondary {
     background-color: var(--color-main-orange);
+}
+
+.btn-secondary:disabled {
+    background-color: var(--color-main-orange-disabled);
+    color: var(--color-text-light-disabled)
+}
+
+.btn-secondary[disabled]:hover {
+    background-color: var(--color-main-orange-disabled);
+    color: var(--color-text-light-disabled)
 }
 
 .btn-secondary:hover {

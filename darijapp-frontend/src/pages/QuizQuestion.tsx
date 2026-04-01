@@ -30,7 +30,7 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                         answers={answers} />
                 </div>
                 <div className="validation">
-                    <AppButton isPrimary={true} isBig={true} hasArrow={true}>Valider</AppButton>
+                    <AppButton isPrimary={true} isBig={true} hasArrow={true} disabled={selectedAnswer == null}>Valider</AppButton>
                 </div>
             </div>
         </>

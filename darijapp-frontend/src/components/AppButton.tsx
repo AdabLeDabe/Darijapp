@@ -5,10 +5,11 @@ interface AppButtonProps {
     isPrimary?: boolean,
     isBig?: boolean,
     hasArrow?: boolean,
+    disabled?: boolean,
     onClick?: () => void
 }
 
-function AppButton({isPrimary = false, isBig = false, hasArrow = false, onClick: onClickCallback = undefined, children} : React.PropsWithChildren<AppButtonProps>) {
+function AppButton({isPrimary = false, isBig = false, hasArrow = false, disabled = false, onClick: onClickCallback = undefined, children} : React.PropsWithChildren<AppButtonProps>) {
     const getClassName = () => {
         var result = "btn";
 
@@ -35,12 +36,15 @@ function AppButton({isPrimary = false, isBig = false, hasArrow = false, onClick:
     }
 
     const executeOnClick = () => {
+        if (disabled) {
+            return;
+        }
         if (onClickCallback) {
             onClickCallback();
         }
     }
 
-    return <button onClick={() => executeOnClick()} className={getClassName()}>{children}{displayArrow()}</button>
+    return <button onClick={() => executeOnClick()} disabled={disabled} className={getClassName()}>{children}{displayArrow()}</button>
 }
 
 export default AppButton;
