@@ -12,6 +12,7 @@ interface QuizQuestionProps {
 function QuizQuestion({ question }: QuizQuestionProps) {
     const [answers, setAnswers] = useState<Answer[]>([]);
     const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null);
+    const [answerValidated, setAnswerValidated] = useState<boolean>(false);
 
     useEffect(() => {
         setAnswers(GetShuffledAnswers(question.correctExpression, question.otherExpressions));
@@ -23,6 +24,7 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                 <div className="question-label">
                     <h2>Traduisez l'expression suivante en français:</h2>
                 </div>
+                {/* TODO Setup question expression in there */}
                 <TranscriptDisplay expression={{ phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" }} />
                 <div className="answers">
                     <AnswerButtons
@@ -30,7 +32,18 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                         answers={answers} />
                 </div>
                 <div className="validation">
-                    <AppButton isPrimary={true} isBig={true} hasArrow={true} disabled={selectedAnswer == null}>Valider</AppButton>
+                    {answerValidated ?
+                        <AppButton
+                            isPrimary={true}
+                            isBig={true}
+                            hasArrow={true}>Continuer</AppButton>
+                        :
+                        <AppButton
+                            isPrimary={true}
+                            isBig={true}
+                            hasArrow={true}
+                            disabled={selectedAnswer == null}
+                            onClick={() => setAnswerValidated(true)}>Valider</AppButton>}
                 </div>
             </div>
         </>

@@ -12,10 +12,18 @@ function AnswerButtons({ answers, selectedAnswerState }: AnswerButtonsProps) {
     const [selectedAnswer, setSelectedAnswer] = selectedAnswerState ? [selectedAnswerState.value, selectedAnswerState.setValue] : useState<Answer | null>(null);
 
     const getOptionClassName = (answer: Answer) => {
+        let classes = ["answer-btn"];
+
         if (selectedAnswer?.id === answer.id)
-            return "answer-btn answer-btn-selected";
-        else
-            return "answer-btn"
+            classes.push("answer-btn-selected");
+
+        // DEBUG
+        if (answer?.id === 1)
+            classes.push("answer-btn-correct")
+        else if (answer?.id === 3)
+            classes.push("answer-btn-wrong")
+
+        return classes.join(' ');
     }
 
     return (

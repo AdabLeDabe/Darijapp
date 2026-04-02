@@ -25,6 +25,16 @@
     box-shadow: inset 2px 2px 0.5rem 2px rgba(0, 0, 0, 0.288);
 }
 
+.answer-btn-correct {
+    background-color: var(--color-correct);
+    color: var(--color-text-light);
+}
+
+.answer-btn-wrong {
+    background-color: var(--color-wrong);
+    color: var(--color-text-light);
+}
+
 @media (min-width: 768px) {
     .answers-container {
         width: 40rem;

@@ -33,6 +33,9 @@ html {
 
     --color-scrollbar: #6f3f15FF;
 
+    --color-correct: #22bb33;
+    --color-wrong: #bb2124;
+
     color: var(--color-text);
     background-color: var(--color-bg);
     margin: 0px;
