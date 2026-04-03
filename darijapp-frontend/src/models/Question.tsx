@@ -37,12 +37,11 @@ export function DisplayExpression(answer: Answer) {
 }
 
 export function GetShuffledAnswers(correctExpression: string | ArabicExpression, otherExpressions: string[] | ArabicExpression[]): Answer[] {
-    const expressions = [...otherExpressions, correctExpression];
-    var shuffledExpressions = expressions.sort(() => Math.random() - 0.5);
-    return [
-        { id: 0, expression: shuffledExpressions[0] },
-        { id: 1, expression: shuffledExpressions[1] },
-        { id: 2, expression: shuffledExpressions[2] },
-        { id: 3, expression: shuffledExpressions[3] }
+    const answers = [
+        { id: 0, expression: correctExpression},
+        { id: 1, expression: otherExpressions[0]},
+        { id: 2, expression: otherExpressions[0]},
+        { id: 3, expression: otherExpressions[0]}
     ];
+    return answers.sort(() => Math.random() - 0.5);
 }

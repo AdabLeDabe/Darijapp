@@ -29,6 +29,7 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                 <div className="answers">
                     <AnswerButtons
                         selectedAnswerState={{ value: selectedAnswer, setValue: setSelectedAnswer }}
+                        answerValidatedState={{value: answerValidated, setValue: setAnswerValidated}}
                         answers={answers} />
                 </div>
                 <div className="validation">
