@@ -1,4 +1,5 @@
 import type { Category } from "../models/Category";
+import { ArabicExpression, FrenchExpression } from "../models/Expression";
 import type { Question } from "../models/Question";
 
 export function GetCategories(): Category[] {
@@ -19,71 +20,32 @@ export function GetQuestions(categoriesIds: number[]): Question[] {
     return [
         {
             type: "A2F",
-            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
-            correctExpression:
-            {
-                phonetic: "ṣbāḥ-əl-ẖīr",
-                arabic: "صباح الخير"
-            },
+            expression: new ArabicExpression("əs-salām-u ɛlay-kum", "السَّلَامُ عَلَيكُم"),
+            correctExpression: new FrenchExpression("Bonjour"),
             otherExpressions: [
-                {
-                    phonetic: "əs-salām-u ɛlay-kumaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "əs-salām-u ɛlay-kum",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "ẖədma",
-                    arabic: "خِدمة"
-                }
+                new FrenchExpression("Comment va-tu"),
+                new FrenchExpression("Au revoir"),
+                new FrenchExpression("Je m'appelle")
             ]
         },
         {
             type: "A2F",
-            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
-            correctExpression:
-            {
-                phonetic: "ṣbāḥ-əl-ẖīr",
-                arabic: "صباح الخير"
-            },
+            expression: new ArabicExpression("ẖədma", "خِدمة"),
+            correctExpression: new FrenchExpression("Travail"),
             otherExpressions: [
-                {
-                    phonetic: "əs-salām-u ɛlay-kum",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "əs-salām-u ɛlay-kum",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "ẖədma",
-                    arabic: "خِدمة"
-                }
+                new FrenchExpression("Manger"),
+                new FrenchExpression("Aller"),
+                new FrenchExpression("Travailler")
             ]
         },
         {
-            type: "A2F",
-            expression: { phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" },
-            correctExpression:
-            {
-                phonetic: "ṣbāḥ-əl-ẖīr",
-                arabic: "صباح الخير"
-            },
+            type: "F2A",
+            expression: new FrenchExpression("Bonjour"),
+            correctExpression: new ArabicExpression("əs-salām-u ɛlay-kum", "السَّلَامُ عَلَيكُم"),
             otherExpressions: [
-                {
-                    phonetic: "əs-salām-u ɛlay-kum",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "əs-salām-u ɛlay-kum",
-                    arabic: "السَّلَامُ عَلَيكُم"
-                },
-                {
-                    phonetic: "ẖədma",
-                    arabic: "خِدمة"
-                }
+                new ArabicExpression("ẖədma", "خِدمة"),
+                new ArabicExpression("bəslāma", "بِسْلامة"),
+                new ArabicExpression("kif ḥāl-ək", "كِف حالِك")
             ]
         }
     ]

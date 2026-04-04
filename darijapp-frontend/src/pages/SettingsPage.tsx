@@ -5,10 +5,12 @@ import { getCssVar } from "../helpers/CssHelper";
 import TranscriptDisplay from "../components/TranscriptDisplay";
 import { useLocalStorageState } from "../helpers/AppCache";
 import type { DisplayType } from "../helpers/Types";
+import { ArabicExpression, type Expression } from "../models/Expression";
 
 function SettingsPage() {
     const [showShortVowels, setShowShortVowels] = useLocalStorageState("display-short-vowels", true);
     const [displayType, setDisplayType] = useLocalStorageState<DisplayType>("display-type", "both");
+    const testExpression = new ArabicExpression("əs-salām-u ɛlay-kum", "السَّلَامُ عَلَيكُم");
 
     return (
         <>
@@ -71,7 +73,7 @@ function SettingsPage() {
                     <h2>Aperçu</h2>
                     <div className="transcript-display">
                         <TranscriptDisplay
-                        expression={{phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم"}}
+                        expression={new ArabicExpression("əs-salām-u ɛlay-kum", "السَّلَامُ عَلَيكُم")}
                         displayTypeState={{value: displayType, setValue: setDisplayType}}
                         shortVowelsState={{value: showShortVowels, setValue: setShowShortVowels}} />
                     </div>

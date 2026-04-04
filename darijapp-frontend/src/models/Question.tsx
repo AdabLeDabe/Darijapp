@@ -1,47 +1,24 @@
-import { FitText } from "../components/FitText";
 import type { QuestionType } from "../helpers/Types";
-import type { ArabicExpression } from "./ArabicExpression";
+import type { Expression } from "./Expression";
 
 export interface Question {
     type: QuestionType,
-    expression: string | ArabicExpression,
-    correctExpression: string | ArabicExpression,
-    otherExpressions: string[] | ArabicExpression[]
+    expression: Expression,
+    correctExpression: Expression,
+    otherExpressions: Expression[]
 }
 
 export interface Answer {
     id: number,
-    expression: string | ArabicExpression
+    expression: Expression
 }
 
-export function IsArabicExpression(answer: any): answer is ArabicExpression {
-    return answer.phonetic !== undefined;
-}
-
-export function DisplayExpression(answer: Answer) {
-    if (IsArabicExpression(answer.expression)) {
-        return (
-            <>
-                <FitText text={answer.expression.phonetic} />
-                <div>{answer.expression.arabic}</div>
-            </>
-        );
-    }
-    else {
-        return (
-            <>
-                <FitText text={answer.expression} />
-            </>
-        )
-    }
-}
-
-export function GetShuffledAnswers(correctExpression: string | ArabicExpression, otherExpressions: string[] | ArabicExpression[]): Answer[] {
+export function GetShuffledAnswers(correctExpression: Expression, otherExpressions: Expression[]): Answer[] {
     const answers = [
-        { id: 0, expression: correctExpression},
-        { id: 1, expression: otherExpressions[0]},
-        { id: 2, expression: otherExpressions[0]},
-        { id: 3, expression: otherExpressions[0]}
+        { id: 0, expression: correctExpression },
+        { id: 1, expression: otherExpressions[0] },
+        { id: 2, expression: otherExpressions[1] },
+        { id: 3, expression: otherExpressions[2] }
     ];
     return answers.sort(() => Math.random() - 0.5);
 }

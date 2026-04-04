@@ -24,8 +24,7 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                 <div className="question-label">
                     <h2>Traduisez l'expression suivante en français:</h2>
                 </div>
-                {/* TODO Setup question expression in there */}
-                <TranscriptDisplay expression={{ phonetic: "əs-salām-u ɛlay-kum", arabic: "السَّلَامُ عَلَيكُم" }} />
+                <TranscriptDisplay expression={question.expression} />
                 <div className="answers">
                     <AnswerButtons
                         selectedAnswerState={{ value: selectedAnswer, setValue: setSelectedAnswer }}
