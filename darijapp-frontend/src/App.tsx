@@ -22,7 +22,7 @@ function App() {
                         <Route path='/' element={<LandingPage />} />
                         <Route path='/quiz' element={<QuizSelection />} />
                         <Route path='/settings' element={<SettingsPage />} />
-                        <Route path="/test" element={<QuizQuestion question={questions[0]} />} />
+                        <Route path="/test" element={<QuizQuestion question={questions[2]} />} />
                     </Routes>
                 </div>
             </main>

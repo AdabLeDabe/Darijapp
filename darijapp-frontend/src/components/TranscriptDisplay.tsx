@@ -22,7 +22,7 @@ function TranscriptDisplay({ expression, shortVowelsState = null, displayTypeSta
     return (
         <>
             <div className={getContainerClassName()}>
-                {expression.DisplayExpression(showShortVowels, displayType)}
+                {expression.DisplayExpression(showShortVowels, displayType, true)}
             </div>
         </>
     );

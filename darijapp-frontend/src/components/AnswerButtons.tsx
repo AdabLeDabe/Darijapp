@@ -37,7 +37,7 @@ function AnswerButtons({ answers, selectedAnswerState, answerValidatedState }: A
         <div className='answers-container'>
             {answers.map(answer =>
                 <div onClick={() => setSelectedAnswer(answer)} key={answer.id} className={getOptionClassName(answer)}>
-                    {answer.expression.DisplayExpression(showShortVowels, displayType)}
+                    {answer.expression.DisplayExpression(showShortVowels, displayType, false)}
                 </div>
             )}
         </div>

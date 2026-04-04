@@ -3,7 +3,7 @@ import { removeArabicShortVowels } from "../helpers/ArabicHelper";
 import type { DisplayType } from "../helpers/Types";
 
 export abstract class Expression {
-    abstract DisplayExpression(showShortVowels: boolean, displayType: DisplayType): React.ReactNode;
+    abstract DisplayExpression(showShortVowels: boolean, displayType: DisplayType, isBig: boolean): React.ReactNode;
 }
 
 export class FrenchExpression extends Expression {
@@ -14,8 +14,8 @@ export class FrenchExpression extends Expression {
         this.expression = expression;
     }
 
-    DisplayExpression(showShortVowels: boolean, displayType: DisplayType): React.ReactNode {
-        return <FitText text={this.expression} />
+    DisplayExpression(showShortVowels: boolean, displayType: DisplayType, isBig: boolean): React.ReactNode {
+        return <FitText text={this.expression} isBig={isBig} />
     }
 }
 
@@ -29,8 +29,8 @@ export class ArabicExpression extends Expression {
         this.arabicExpression = arabic;
     }
 
-    private displayPhonetic() {
-        return <FitText text={this.phoneticExpression} />;
+    private displayPhonetic(isBig: boolean) {
+        return <FitText text={this.phoneticExpression} isBig={isBig} />;
     }
 
     private displayArabic(showShortVowels: boolean) {
@@ -40,23 +40,23 @@ export class ArabicExpression extends Expression {
             return <div>{removeArabicShortVowels(this.arabicExpression)}</div>
     }
 
-    private displayTranscript(showShortVowels: boolean, displayType: DisplayType) {
+    private displayTranscript(showShortVowels: boolean, displayType: DisplayType, isBig: boolean) {
         switch (displayType) {
             case "phonetic":
-                return <>{this.displayPhonetic()}</>
+                return <>{this.displayPhonetic(isBig)}</>
             case "arabic":
                 return <>{this.displayArabic(showShortVowels)}</>
             default:
                 return (
                     <>
-                        {this.displayPhonetic()}
+                        {this.displayPhonetic(isBig)}
                         {this.displayArabic(showShortVowels)}
                     </>
                 )
         }
     }
 
-    DisplayExpression(showShortVowels: boolean, displayType: DisplayType): React.ReactNode {
-        return this.displayTranscript(showShortVowels, displayType);
+    DisplayExpression(showShortVowels: boolean, displayType: DisplayType, isBig: boolean): React.ReactNode {
+        return this.displayTranscript(showShortVowels, displayType, isBig);
     }
 }

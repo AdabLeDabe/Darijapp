@@ -3,9 +3,10 @@ import "../styles/FitText.css";
 
 type FitTextProps = {
     text: string;
+    isBig?: boolean;
 };
 
-export function FitText({ text }: FitTextProps) {
+export function FitText({ text, isBig = false }: FitTextProps) {
     const minPx = 10;
     const stepPx = 1;
 
@@ -25,8 +26,6 @@ export function FitText({ text }: FitTextProps) {
 
         const fits = () => el.scrollWidth <= el.clientWidth;
 
-        console.log(fits)
-
         // Already fits at default size
         if (fits()) return;
 
@@ -40,7 +39,7 @@ export function FitText({ text }: FitTextProps) {
     }, [text]);
 
     return (
-        <div ref={ref} className="fit-text-container">
+        <div ref={ref} className={isBig ? "fit-text-container-big" : "fit-text-container"}>
             {text}
         </div>
     );

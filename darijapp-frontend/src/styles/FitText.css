@@ -3,3 +3,10 @@
     width: 100%;
     max-width: 100%;
 }
+
+.fit-text-container-big {
+    font-size: xx-large;
+    font-weight: 500;
+    width: 100%;
+    max-width: 100%;
+}
