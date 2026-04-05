@@ -16,13 +16,15 @@ function QuizQuestion({ question }: QuizQuestionProps) {
 
     useEffect(() => {
         setAnswers(GetShuffledAnswers(question.correctExpression, question.otherExpressions));
-    }, [])
+    }, [question])
 
     return (
         <>
             <div className="quiz-question-container">
                 <div className="question-label">
-                    <h2>Traduisez l'expression suivante en français:</h2>
+                    {question.type === "A2F"
+                    ? <h2>Traduisez l'expression suivante en français:</h2>
+                    : <h2>Traduisez l'expression suivante en darija:</h2>}
                 </div>
                 <TranscriptDisplay expression={question.expression} />
                 <div className="answers">
