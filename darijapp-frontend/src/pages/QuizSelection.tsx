@@ -33,7 +33,7 @@ function QuizSelection() {
                     <AppButton onClick={unselectAll}>Tout déselectionner</AppButton>
                 </div>
                 <div className="validation">
-                    <AppButton isBig={true} isPrimary={true} hasArrow={true}>Lancer le quiz</AppButton>
+                    <AppButton isBig={true} isPrimary={true} hasArrow={true} disabled={selectedCategories.length == 0}>Lancer le quiz</AppButton>
                 </div>
             </div>
         </>
