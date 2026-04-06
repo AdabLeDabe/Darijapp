@@ -6,15 +6,18 @@ import TranscriptDisplay from "../components/TranscriptDisplay";
 import { GetShuffledAnswers, type Answer, type Question } from "../models/Question";
 
 interface QuizQuestionProps {
-    question: Question
+    question: Question,
+    nextQuestionCallback: (selectedAnswer: Answer, correctAnswer: Answer) => void
 }
 
-function QuizQuestion({ question }: QuizQuestionProps) {
+function QuizQuestion({ question, nextQuestionCallback }: QuizQuestionProps) {
     const [answers, setAnswers] = useState<Answer[]>([]);
     const [selectedAnswer, setSelectedAnswer] = useState<Answer | null>(null);
     const [answerValidated, setAnswerValidated] = useState<boolean>(false);
 
     useEffect(() => {
+        setSelectedAnswer(null);
+        setAnswerValidated(false);
         setAnswers(GetShuffledAnswers(question.correctExpression, question.otherExpressions));
     }, [question])
 
@@ -38,7 +41,8 @@ function QuizQuestion({ question }: QuizQuestionProps) {
                         <AppButton
                             isPrimary={true}
                             isBig={true}
-                            hasArrow={true}>Continuer</AppButton>
+                            hasArrow={true}
+                            onClick={() => nextQuestionCallback(selectedAnswer ?? answers[1], answers[0])}>Continuer</AppButton>
                         :
                         <AppButton
                             isPrimary={true}

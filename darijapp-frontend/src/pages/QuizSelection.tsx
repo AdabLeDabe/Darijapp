@@ -3,9 +3,13 @@ import AppButton from "../components/AppButton";
 import CategoryList from "../components/CategoryList";
 import "../styles/QuizSelection.css"
 
-function QuizSelection() {
+interface QuizQuestionProps {
+    categoriesSelectedCallback: (selectedCategories: number[]) => void
+}
+
+function QuizSelection({ categoriesSelectedCallback }: QuizQuestionProps) {
     const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
-    
+
     const addOrRemoveCategory = (id: number) => {
         let newSelectedCategories = [...selectedCategories];
         if (newSelectedCategories.includes(id)) {
@@ -26,14 +30,19 @@ function QuizSelection() {
             <div className="quiz-selection-container">
                 <div className="selection-label">Sélectionnez une ou plusieurs thématiques:</div>
                 <div className="categories">
-                    <CategoryList selectedCategories={selectedCategories} updateSelectedCategories={addOrRemoveCategory}/>
+                    <CategoryList selectedCategories={selectedCategories} updateSelectedCategories={addOrRemoveCategory} />
                 </div>
                 <div className="unselect-menu">
                     <div>Thématiques sélectionnées: {selectedCategories.length}</div>
                     <AppButton onClick={unselectAll}>Tout déselectionner</AppButton>
                 </div>
                 <div className="validation">
-                    <AppButton isBig={true} isPrimary={true} hasArrow={true} disabled={selectedCategories.length == 0}>Lancer le quiz</AppButton>
+                    <AppButton
+                        isBig={true}
+                        isPrimary={true}
+                        hasArrow={true}
+                        disabled={selectedCategories.length == 0}
+                        onClick={() => categoriesSelectedCallback(selectedCategories)}>Lancer le quiz</AppButton>
                 </div>
             </div>
         </>
