@@ -27,7 +27,9 @@ export function QuizResults({ questionResults, restartQuizCallback }: QuizResult
                 <div className="title">
                     <h2>Terminé !</h2>
                 </div>
-                <div className="results">Vous avez obtenu {getGoodAnswersNumber()}/{questionResults.length}</div>
+                <div className="results">
+                    <h2>Vous avez obtenu {getGoodAnswersNumber()}/{questionResults.length}</h2>
+                </div>
                 <div className="results-details"></div>
                 <div className="restart">
                     <AppButton
