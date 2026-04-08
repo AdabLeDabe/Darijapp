@@ -12,6 +12,8 @@ export function QuizResults({ questionResults, restartQuizCallback }: QuizResult
     const getGoodAnswersNumber = () => {
         let number = 0;
         questionResults.forEach(questionResult => {
+            console.log("correct answer: " + questionResult.correctAnswer.id);
+            console.log("selected answer: " + questionResult.selectedAnswer.id);
             if (questionResult.correctAnswer.id === questionResult.selectedAnswer.id) {
                 number++;
             }

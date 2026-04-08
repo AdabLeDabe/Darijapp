@@ -17,6 +17,8 @@ export function QuizProcess() {
     }
 
     const goToNextQuestion = (selectedAnswer: Answer, correctAnswer: Answer) => {
+        console.log(selectedAnswer)
+        console.log(correctAnswer)
         questionResults.push({
             question: questions[currentQuestionId],
             selectedAnswer: selectedAnswer,

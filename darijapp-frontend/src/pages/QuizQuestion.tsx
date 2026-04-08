@@ -42,7 +42,7 @@ function QuizQuestion({ question, nextQuestionCallback }: QuizQuestionProps) {
                             isPrimary={true}
                             isBig={true}
                             hasArrow={true}
-                            onClick={() => nextQuestionCallback(selectedAnswer ?? answers[1], answers[0])}>Continuer</AppButton>
+                            onClick={() => nextQuestionCallback(selectedAnswer ?? answers[1], answers.filter(a => a.id == 0)[0])}>Continuer</AppButton>
                         :
                         <AppButton
                             isPrimary={true}

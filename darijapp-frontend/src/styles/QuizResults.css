@@ -24,3 +24,10 @@
 .quiz-results-container div.restart {
     grid-area: restart;
 }
+
+@media (min-width: 768px) {
+    .quiz-results-container {
+        width: 40rem;
+        margin: auto;
+    }
+}
